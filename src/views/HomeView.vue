@@ -1,4 +1,5 @@
 <template>
+  <div>
   <section class="main">
     <div class="container">
       <div class="main-container">
@@ -13,6 +14,34 @@
       </div>
     </div>
   </section>
+  <section class="popularcrypto">
+    <div class="container">
+      <div class="crypto-cards">
+        <div class="crypto-cards__cardsell">
+        <input type="number" placeholder="Потратите">
+          <select>
+            <option>1</option>
+          </select>
+        </div>
+        <div class="crypto-cards__cardreceive">
+        <input type="number" placeholder="Получите">
+          <select>
+            <option>2</option>
+          </select>
+        </div>
+        <div class="crypto-cards__cardreg">
+        <input type="number" placeholder="Получите при регистрации">
+          <select>
+            <option>3</option>
+          </select>
+        </div>
+        <div class="crypto-cards__button">
+          Рассчитать
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
 </template>
 
 <script>
@@ -32,6 +61,7 @@ export default {
   /*------------MAIN--------------*/
 
   .main{
+    background-size: 100% 100%;
     height: size(896, 1920);
     background-image: url('../assets/images/mainbg.png');
   }
@@ -106,5 +136,73 @@ export default {
     line-height: size(56, 1920);
     color: #FFFFFF;
 
+  }
+
+  /*--------------CRYPTO--------------*/
+
+  .crypto-cards{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .crypto-cards__cardsell, .crypto-cards__cardreceive{
+    display: flex;
+    height: size(44, 1920);
+    align-items: center;
+    justify-content: center;
+    input {
+      padding-left: size(17, 1920);
+      width: size(237, 1920);
+      height: size(44, 1920);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 1920);
+      line-height: size(18, 1920);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 1920);
+      height: size(44, 1920);
+    }
+  }
+
+  .crypto-cards__cardreg{
+    display: flex;
+    height: size(44, 1920);
+    align-items: center;
+    justify-content: center;
+    input {
+      padding-left: size(17, 1920);
+      width: size(250, 1920);
+      height: size(44, 1920);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 1920);
+      line-height: size(18, 1920);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 1920);
+      height: size(44, 1920);
+    }
+
+  }
+
+
+  .crypto-cards__button{
+    width: size(229, 1920);
+    height: size(44, 1920);
+    background: #46DFDD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: size(16, 1920);
+    line-height: size(19, 1920);
+    color: #000000;
   }
 </style>
