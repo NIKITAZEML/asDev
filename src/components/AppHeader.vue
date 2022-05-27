@@ -133,7 +133,7 @@ export default{
       .header__nav{
         font-style: normal;
         font-weight: 400;
-        font-size: size(50, 750);
+        font-size: size(60, 750);
         line-height: size(28, 1920);
         color: #FFFFFF;
         margin: 0;
@@ -152,16 +152,18 @@ export default{
         font-family: 'Raleway';
         padding: size(12, 750) size(28, 750);
         font-weight: 400;
-        font-size: size(16, 750);
+        font-size: size(20, 750);
         line-height: size(19, 750);
         color: #FFFFFF;
         width: 100%;
+        height: size(50, 750);
     }
     .header-register{
-          font-size: size(16, 750);
+          font-size: size(20, 750);
            padding: size(12, 750) size(28, 750);
            line-height: size(19, 750);
            width: 100%;
+           height: size(50, 750);
     }
     .nav-block{
      display: flex;
@@ -174,6 +176,10 @@ export default{
  .header-logo{
         width: size(150, 750);
         height: size(20, 750);
+    }
+       .container{
+        width: size(700, 750);
+        margin: 0 auto;
     }
     }
 </style>
