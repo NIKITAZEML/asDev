@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
   <section class="main">
     <div class="container">
       <div class="main-container">
@@ -9,7 +9,7 @@
       </div>
         <div class="main-button__container">
           <input type="email" class="main-button__email"  placeholder="Введите email">
-          <div class="main-button__register">Зарегистрироваться </div>
+          <router-link for="chk"  :to="'/auth'"><div class="main-button__register">Зарегистрироваться </div></router-link>
         </div>
       </div>
     </div>
@@ -55,12 +55,12 @@
       <div class="crypto-stats-cards">
         <div class="stats-card">
           <div class="stats-card-icon">
-          <img src="../assets/images/icons/telegram.svg" alt="">
+          <img src="../assets/images/icons/btk.png" alt="">
           <span class="stats-card__name">BNB</span>
           </div>
-          <span class="stats-card__price">₽20 100</span>
-          <span class="stats-card__timeprice">₽20 500</span>
-          <span class="stats-card__largeprice">₽3 281 818M</span>
+          <span class="stats-card__price">20 100 ₽</span>
+          <span class="stats-card__timeprice">20 500 ₽</span>
+          <span class="stats-card__largeprice">3 281 818M ₽</span>
         </div>
       </div>
       <div class="crypto-register__title">
@@ -85,6 +85,10 @@ export default {
 
 <style scoped lang="scss">
   @import "src/assets/styles/fonts";
+
+  .wrapper{
+    background: #1D114F;
+  }
 
   /*------------MAIN--------------*/
 
@@ -284,16 +288,32 @@ export default {
   .stats-card-icon{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    width: size(360, 1920);
+    img{
+      width: size(40, 1920);
+      height: size(40, 1920);
+      margin-right: size(10, 1920);
+    }
   }
 
   .stats-card{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-top: size(30, 1920);
   }
-
+  .stats-card__price{
+    width: size(420, 1920);
+  }
+  .stats-card__timeprice{
+    width: size(485, 1920);
+  }
+  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
+    font-weight: 400;
+    font-size: size(20, 1920);
+    line-height: size(23, 1920);
+    color: #FFFFFF;
+    align-items: center;
+  }
 
   /*-------CRYPTO-TITLE-----*/
 
@@ -308,7 +328,7 @@ export default {
   .register-title__button{
     width: size(166, 1920);
     height: size(50, 1920);
-    margin: size(10, 1920) 0 size(66, 1920) 0;
+    margin: size(30, 1920) 0 size(66, 1920) 0;
     display: flex;
     align-items: center;
     justify-content: center;
