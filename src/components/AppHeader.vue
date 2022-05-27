@@ -22,7 +22,6 @@
     .container{
         width: size(1440, 1920);
         margin: 0 auto;
-        padding-top: size(24, 1920);
     }
 
     .header{
@@ -30,6 +29,7 @@
         justify-content: space-between;
         align-items: center;
         text-align: center;
+        height: size(108, 1920);
     }
 
     /*-----------------LOGO-------------   */
@@ -60,7 +60,6 @@
     .header-login{
         margin-left: size(252, 1920);
         border: 1px solid #BCD0E5;
-        border-radius: 4px;
         font-family: 'Raleway';
         padding: size(12, 1920) size(28, 1920);
         font-weight: 400;
@@ -72,8 +71,6 @@
     .header-register{
         margin-left: size(24, 1920);
         background: #FFFFFF;
-        border-radius: 4px;
-        font-family: 'Raleway';
         padding: size(12, 1920) size(17, 1920);
         font-weight: 600;
         font-size: size(16, 1920);
