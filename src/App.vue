@@ -1,22 +1,25 @@
 <template>
   <div id="app">
-    <HeaderViews/>
+    <AppHeader/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import HeaderViews from '@/components/HeaderViews.vue'
+import AppHeader from '@/components/AppHeader.vue'
 
 export default {
  
   components: {
-    HeaderViews
+    AppHeader
   }
 }
 </script>
 
 <style lang="scss">
-
+  @import "src/assets/styles/fonts";
+  #app{
+    background: #1D114F;
+  }
 </style>
 
