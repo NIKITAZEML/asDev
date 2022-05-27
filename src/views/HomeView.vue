@@ -39,6 +39,34 @@
           Рассчитать
         </div>
       </div>
+      <div class="crypto-title">
+        <span class="crypto-title__text">Популярные криптовалюты</span>
+          <div class="crypto-checkall">
+            <span class="crypto-checkall__text">Посмотреть все</span>
+            <img src="../assets/images/icons/checkall.png">
+          </div>
+      </div>
+      <div class="crypto-stats">
+        <span class="crypto-stats__text">Название </span>
+        <span class="crypto-stats__text">Последняя цена</span>
+        <span class="crypto-stats__text">Стоимость 24 часа назад</span>
+        <span class="crypto-stats__text">Наивысшая стоимость</span>
+      </div>
+      <div class="crypto-stats-cards">
+        <div class="stats-card">
+          <div class="stats-card-icon">
+          <img src="../assets/images/icons/telegram.svg" alt="">
+          <span class="stats-card__name">BNB</span>
+          </div>
+          <span class="stats-card__price">₽20 100</span>
+          <span class="stats-card__timeprice">₽20 500</span>
+          <span class="stats-card__largeprice">₽3 281 818M</span>
+        </div>
+      </div>
+      <div class="crypto-register__title">
+        <span class="crypto-title__text">Зарегистрируйтесь сейчас и бесплатно создайте свой криптопортфель!</span>
+        <div class="register-title__button">Начать</div>
+      </div>
     </div>
   </section>
   </div>
@@ -205,4 +233,90 @@ export default {
     line-height: size(19, 1920);
     color: #000000;
   }
+
+  /*------Crypto----Popylaryty------*/
+
+  .crypto-title{
+    margin-top: size(100, 1920);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .crypto-title__text{
+    font-weight: 600;
+    font-size: size(30, 1920);
+    line-height: size(35, 1920);
+    color: #FFFFFF;
+  }
+
+  .crypto-checkall{
+    display: flex;
+    align-items: center;
+    img{
+      width: size(23, 1920);
+      height: size(19, 1920);
+      margin-left: size(8, 1920);
+    }
+  }
+
+  .crypto-checkall__text{
+    font-weight: 600;
+    font-size: size(16, 1920);
+    line-height: size(19, 1920);
+    color: #FFFFFF;
+  }
+
+  /*------CRYPTO-STATS------*/
+
+  .crypto-stats{
+    display: flex;
+    justify-content: space-between;
+    margin-top: size(50, 1920);
+  }
+
+  .crypto-stats__text{
+    font-weight: 600;
+    font-size: size(16, 1920);
+    line-height: size(19, 1920);
+    color: #FFFFFF;
+  }
+
+  .stats-card-icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stats-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: size(30, 1920);
+  }
+
+
+  /*-------CRYPTO-TITLE-----*/
+
+  .crypto-register__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: size(90, 1920);
+  }
+
+  .register-title__button{
+    width: size(166, 1920);
+    height: size(50, 1920);
+    margin: size(10, 1920) 0 size(66, 1920) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #46DFDD;
+    font-weight: 600;
+    font-size: size(16, 1920);
+    line-height: size(19, 1920);
+    color: #000000;
+  }
+
 </style>
