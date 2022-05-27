@@ -8,8 +8,8 @@
                         <div class="nav-block">
                             <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
                             <route-link :to="'/'" class="header__nav">Курс валют</route-link>
-                            <div class="header-login">Войти</div>
-                            <div class="header-register">Зарегистрироваться</div>
+                            <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
+                            <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
                         </div>
                 </nav>
             </div>

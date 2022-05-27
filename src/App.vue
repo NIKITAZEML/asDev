@@ -21,6 +21,9 @@ export default {
 <style lang="scss">
   @import "src/assets/styles/fonts";
   #app{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     background: #1D114F;
   }
 </style>
