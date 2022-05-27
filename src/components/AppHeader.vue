@@ -3,7 +3,12 @@
         <div class="container">
             <div class="header">
                 <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
-                <button class="burger-menu" v-on:click="open">меню</button>
+                      <transition name="fade">
+                    <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
+                     </transition>
+                    <transition name="fade" ><img v-show="openOb" src="@/assets/images/close.svg" class="burger-menu" v-on:click="open"/>
+                    </transition>
+              
                 <nav v-bind:class="{nav_open:openOb}">
                         <div class="nav-block">
                             <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
@@ -21,7 +26,7 @@
 export default{
     data(){
         return{
-           openOb: false
+           openOb: false,
         }
     },
     methods:{
@@ -40,7 +45,12 @@ export default{
 
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .9s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
     .container{
         width: size(1440, 1920);
         margin: 0 auto;
@@ -112,9 +122,14 @@ export default{
        
          .burger-menu{
     display: block;
+    width: size(40, 750);
+    height: size(40, 750);
+    position: absolute;
+    top: size(20, 750);
+    right: size(20, 750);
 }
     nav{  
-        top:size(70, 750);
+        top:size(80, 750);
         left: 0;
         margin: 0;
         flex-direction: column;
@@ -143,7 +158,7 @@ export default{
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        height: size(70, 750);
+        height: size(80, 750);
         z-index: 999;
     }
     .header-login{
@@ -156,14 +171,18 @@ export default{
         line-height: size(19, 750);
         color: #FFFFFF;
         width: 100%;
-        height: size(50, 750);
+        height: size(60, 750);
+         vertical-align: center;
+        text-align: center;
     }
     .header-register{
           font-size: size(20, 750);
            padding: size(12, 750) size(28, 750);
            line-height: size(19, 750);
            width: 100%;
-           height: size(50, 750);
+           height: size(60, 750);
+           vertical-align: center;
+           text-align: center;
     }
     .nav-block{
      display: flex;
@@ -171,6 +190,7 @@ export default{
         align-items: center;
         text-align: center;
         flex-direction: column;
+        vertical-align: center;
         height: 30%;
 }
  .header-logo{
