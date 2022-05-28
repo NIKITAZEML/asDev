@@ -1,22 +1,27 @@
 <template>
         <div class="wrapper">
             <div class="main">
-                <input type="checkbox" id="chk" aria-hidden="true">
-                <div class="signup">
+                <input type="checkbox" id="chk" aria-hidden="true" v-model="openAuth">
+                <div class="signup" @submit.prevent="signup">
                     <form>
                         <label for="chk" aria-hidden="true">Регистрация</label>
-                        <input type="text" name="txt" placeholder="Логин" required="">
-                        <input type="email" name="eml" placeholder="Email" required="">
-                        <input type="password" name="pswd" placeholder="Пароль" required="">
-                        <input type="password" name="pswd" placeholder="Повторите пароль" required="">
+                        <input type="text" name="txt" placeholder="Логин" v-model="signupData.login">
+                        <input type="text" name="eml" placeholder="Email" v-model="signupData.email">
+                        <input type="password" name="pswd" placeholder="Пароль" v-model="signupData.password">
+                        <input type="password" name="pswd" placeholder="Повторите пароль" v-model="signupData.repeatPassword">
+                        <p style="color: red" v-if="signupErrors.emptyFields.status">{{ signupErrors.emptyFields.text }}</p>
+                        <p style="color: red" v-if="signupErrors.checkRepeatPassword.status">{{ signupErrors.checkRepeatPassword.text }}</p>
+                        <p style="color: red" v-if="signupErrors.serverError.status">{{ signupErrors.serverError.text }}</p>
                         <button class="signup-button">Регистрация</button>
                     </form>
                 </div>
                 <div class="login">
-                    <form>
+                    <form @submit.prevent="login">
                         <label for="chk" aria-hidden="true">Войти</label>
-                        <input type="email" name="eml" placeholder="Email" required="">
-                        <input type="password" name="pswd" placeholder="Пароль" required="">
+                        <input type="text" name="eml" placeholder="Email" v-model="loginData.email">
+                        <input type="password" name="pswd" placeholder="Пароль" v-model="loginData.password">
+                        <p style="color: red" v-if="loginErrors.emptyFields.status">{{ loginErrors.emptyFields.text }}</p>
+                        <p style="color: red" v-if="loginErrors.serverErrors.status">{{ loginErrors.serverErrors.text }}</p>
                         <button class="login-button">Войти</button>
                         <img src="../assets/images/logologin.png" >
                     </form>
@@ -26,8 +31,114 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     export default {
-        name: "AuthView"
+        name: "AuthView",
+        data () {
+          return {
+            isAuth: true,
+            openAuth: '',
+            signupData: {
+              login: '',
+              email: '',
+              password: '',
+              repeatPassword: ''
+            },
+            signupErrors: {
+              emptyFields: {
+                text: 'Заполните все поля',
+                status: false
+              },
+              checkRepeatPassword: {
+                text: 'Пароли должны совпадать',
+                status: false
+              },
+              serverError: {
+                text: '',
+                status: false
+              }
+            },
+
+            loginData: {
+              email: '',
+              password: ''
+            },
+
+            loginErrors: {
+              emptyFields: {
+                text: 'Заполните все поля',
+                status: false
+              },
+              serverErrors: {
+                text: '',
+                status: false
+              }
+            }
+          }
+        },
+        methods: {
+          async signup() {
+            this.signupErrors.checkRepeatPassword.status = false
+            this.signupErrors.emptyFields.status = false
+            this.signupErrors.serverError.status = false
+            if(this.signupData.login.trim() && this.signupData.email.trim()){
+              if(this.signupData.password.trim() === this.signupData.repeatPassword.trim()){
+                let res
+                try {
+                  res = await axios.post('http://localhost:5000/api/signup', {
+                    login: this.signupData.login,
+                    email: this.signupData.email,
+                    password: this.signupData.password
+                  })
+                  console.log(res.data)
+                  if(res.data.registerStatus){
+                    this.openAuth = true
+                  }
+                  return res.data
+                } catch (e) {
+                  this.signupErrors.serverError.text = e.response.data.errorText
+                  this.signupErrors.serverError.status = true
+                  console.log(e.response.data.errorText)
+                  return e.response.data.errorText
+                }
+              } else {
+                // пароли должны совпадать
+                this.signupErrors.checkRepeatPassword.status = true
+              }
+            } else {
+              // заполните все поля
+              this.signupErrors.emptyFields.status = true
+            }
+          },
+          async login() {
+            this.loginErrors.emptyFields.status = false
+            this.loginErrors.serverErrors.status = false
+            if(this.loginData.email.trim() && this.loginData.password.trim()){
+              try {
+                let res = await axios.post('http://localhost:5000/api/login', {
+                  email: this.loginData.email,
+                  password: this.loginData.password
+                })
+                console.log(res.data)
+                if(res.data.token){
+                  // записываю токен
+                  localStorage.setItem('token', res.data.token)
+                  // перекидываю в личный кабинет
+                  this.$router.push('/account')
+                }
+                return res.data
+              } catch (e) {
+                console.log(e.response.data.message)
+                this.loginErrors.serverErrors.text = e.response.data.message
+                this.loginErrors.serverErrors.status = true
+                return e.response.data.errorText
+              }
+            } else {
+              this.loginErrors.emptyFields.status = true
+            }
+          }
+        }
     }
 </script>
 
