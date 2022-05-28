@@ -13,14 +13,14 @@
                         </transition>
                    </div>
                          <div v-bind:class="{nav_open:openOb}"  class="nav">
-                            <div class="nav-block-value">
-                                <router-link :to="'/trade'" class="header__nav">Обмен валют</router-link>
-                                <router-link :to="'/cource'" class="header__nav">Курс валют</router-link>
-                            </div>
-                            <div class="nav-block-singin">
-                                <router-link :to="'/auth'" class="header-login">Войти</router-link>
-                                <router-link :to="'/auth'" class="header-register">Зарегистрироваться</router-link>
-                            </div>
+                                <div class="nav-block-value">
+                                <route-link v-on:click="open" :to="'/trade'" class="header__nav">Обмен валют</route-link>
+                                <route-link v-on:click="open" :to="'/cource'" class="header__nav">Курс валют</route-link>
+                                </div>
+                                <div class="nav-block-singin">
+                                <router-link :to="'/auth'"><div v-on:click="open" class="header-login">Войти</div></router-link>
+                                <router-link :to="'/auth'"><div v-on:click="open" class="header-register">Зарегистрироваться</div></router-link>
+                                </div>
                          </div>
                         </div>
                 </nav>
@@ -125,7 +125,6 @@ export default{
         font-size: size(16, 1920);
         line-height: size(19, 1920);
         color: #FFFFFF;
-         -moz-border-radius: 2px;
         -moz-transition: 0.2s ease-out;
         -ms-transition: 0.2s ease-out;
         -o-transition: 0.2s ease-out;
@@ -176,7 +175,6 @@ export default{
         font-size: size(16, 1920);
         line-height: size(19, 1920);
         color: #000000;
-         -moz-border-radius: 2px;
     -moz-transition: 0.2s ease-out;
     -ms-transition: 0.2s ease-out;
     -o-transition: 0.2s ease-out;
@@ -205,7 +203,23 @@ export default{
     height: size(40, 750);
     position: absolute;
     top: size(20, 750);
-    right: size(40, 750);
+    right: size(50, 750);
+}
+    .nav{  
+        top:-100%;
+         transition: 0.5s ease-out;
+        left: 0;
+        margin: 0;
+        flex-direction: column;
+        z-index: 9;
+        position: absolute;
+        height: 100%;
+        background-color: rgb(61, 14, 75);
+        width: 100%;
+         padding: size(25, 750);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
     }
 
     .nav{  
@@ -284,6 +298,10 @@ export default{
         text-align: center;
         vertical-align: center;
         height: 30%;
+}
+ .header-logo{
+        width: size(250, 750);
+        height: size(20, 750);
     }
 
     .header-logo{

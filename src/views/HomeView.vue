@@ -409,5 +409,60 @@ export default {
     box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
     cursor: pointer;
   }
+@media (max-width: 750px){
+   .main-container{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    text-align: end;
+  }
+  .main{
+    background-image: none;
+    height: auto;
+    width: 100%;
+  }
+  .main-container{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+    padding: 0;
+  }
+  .main-container__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+    width: 100%;
+    margin-bottom: size(40, 1920);
+  }
+  .main__title{
+    font-weight: 400;
+    font-size: size(48, 750);
+    line-height: size(56, 750);
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  .main__little{
+    font-weight: 600;
+    font-size: size(48, 750);
+    line-height: size(56, 750);
+    color: #FFFFFF;
+     text-align: center;
+
+  }
+  .main-button__container{
+    width: 100%;
+  }
+  .col-3{
+    width: 40%;
+  }
+  .main-button__email{
+    width: 100%;
+    height: size(20, 750);
+  }
+}
 </style>
