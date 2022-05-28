@@ -286,9 +286,12 @@ input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%;
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: #000000;
+    color: white;
      transition: 0.2s ease-out;
      cursor: pointer;
+     background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(162,104,186,1) 0%, rgba(47,179,205,1) 100%);
+border-radius: 5px;
   }
 .crypto-cards__button:hover{
   background-color: #6d44b8;
@@ -297,6 +300,8 @@ input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%;
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
  transition: 0.2s ease-out;
+ background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,179,205,1) 0%, rgba(162,104,186,1) 100%);
  cursor: pointer;
 }
   /*------Crypto----Popylaryty------*/
@@ -397,9 +402,12 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: #000000;
+    color: white;
      transition: 0.2s ease-out;
      cursor: pointer;
+     border-radius: 5px;
+     background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(162,104,186,1) 0%, rgba(47,179,205,1) 100%);
   }
   .register-title__button:hover{
      background-color: #6d44b8;
@@ -408,6 +416,8 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
  transition: 0.2s ease-out;
+ background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,179,205,1) 0%, rgba(162,104,186,1) 100%);
  cursor: pointer;
   }
 
