@@ -64,18 +64,17 @@
         <span class="crypto-stats__text">Изменение за 24 часа</span>
         <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
       </div>
-      <div class="crypto-stats-cards">
-        <div v-for='currencies in this.$store.state.currencies'>
+     
+        <div v-for='currencies in this.$store.state.currencies' class="crypto-stats-cards">
         <div class="stats-card" v-for='currencie in currencies'>
            <div class="stats-card-icon">
             <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
             <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
           </div>
           <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
-          <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
-          <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
+          <span class="stats-card__timeprice">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+          <span class="stats-card__largeprice">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
         </div>
-      </div>
       </div>
       
       <div class="crypto-register__title">
@@ -373,26 +372,21 @@ export default {
   .stats-card-icon{
     display: flex;
     align-items: center;
-    width: size(360, 1920);
+    width: size(345, 1920);
     img{
-      width: 30%;
+      width: size(50, 1920);
+      height: size(50, 1920);
       height: auto;
       margin-right: size(10, 1920);
     }
   }
 
-  .stats-card{
-    display: flex;
-    align-items: center;
-    margin-top: size(30, 1920);
-  }
-
   .stats-card__price{
-    width: size(420, 1920);
+    width: size(400, 1920);
   }
 
   .stats-card__timeprice{
-    width: size(485, 1920);
+    width: size(440, 1920);
   }
 
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
@@ -432,10 +426,8 @@ export default {
   }
   .stats-card{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    height: size(50, 1920);
-    justify-content: space-between;
+    margin-top: size(30, 1920);
+    align-items: center;
   }
   .register-title__button:hover{
     color: white;
@@ -663,6 +655,9 @@ export default {
   }
   .stats-card{
     width: 40%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin-bottom: size(50, 750);
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
