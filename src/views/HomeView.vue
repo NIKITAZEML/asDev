@@ -164,9 +164,9 @@ export default {
 .main-button__email:focus ~ .focus-border i:after{transition-delay: 0.4s;}
 :focus{outline: none;}
 .main-button__email:focus{
--webkit-box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);
--moz-box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);
-box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);}
+-webkit-box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);
+-moz-box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);
+box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);}
 /* necessary to give position: relative to parent. */
 input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
 .col-3{ position: relative;}
