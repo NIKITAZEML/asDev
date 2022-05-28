@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView'
 import AuthView from "@/views/AuthView"
 import AccountView from "@/views/AccountView"
-import TradeView from "@/views/TradeView";
+import TradeView from "@/views/TradeView"
+import CourceView from "@/views/CourceView";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/trade',
     name: 'TradeView',
     component: TradeView
+  },
+  {
+    path: '/cource',
+    name: 'CourceView',
+    component: CourceView
   },
 ]
 
