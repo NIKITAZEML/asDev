@@ -121,8 +121,8 @@
         color:black;
     }
 
-
     img{
+        margin-top: size(30, 1920);
         width: size(81, 1920);
         height: size(67, 1920);
     }
