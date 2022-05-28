@@ -13,7 +13,7 @@
                              <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/trello.svg" alt=""></a>
                          </div>
                         <span class="footer-info-text__span">Разработка команды AsDev</span>
-                        <span class="footer-info-text__span">Company Registration No. : 2658020</span>    
+
                     </div>
                     <div class="footer-info-text">
                          <span class="footer-info-text__span">Политика использования</span>
@@ -29,7 +29,7 @@
 <style lang="scss" scoped>
   @import "src/assets/styles/fonts.scss";
   footer{
-      height: size(171, 1920);
+      min-height: size(150, 1920);
       display: flex;
       align-items: center;
       margin: 0;

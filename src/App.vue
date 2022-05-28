@@ -24,6 +24,7 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    height: 100vh;
     background: #1D114F;
   }
 </style>
