@@ -14,8 +14,8 @@
                    </div>
                          <div v-bind:class="{nav_open:openOb}"  class="nav">
                                 <div class="nav-block-value">
-                                <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
-                                <route-link :to="'/'" class="header__nav">Курс валют</route-link>
+                                <router-link :to="'/tragde'" class="header__nav">Обмен валют</router-link>
+                                <router-link :to="'/'" class="header__nav">Курс валют</router-link>
                                 </div>
                                 <div class="nav-block-singin">
                                 <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
@@ -182,7 +182,6 @@ export default{
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
-
     .burger-menu{
         display: none;
     }
@@ -294,5 +293,4 @@ export default{
          flex-direction: column;
        }
     }
-
 </style>
