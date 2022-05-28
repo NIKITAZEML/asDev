@@ -59,5 +59,17 @@
     line-height: size(16, 1920);
     font-weight: 700;
 }
-
+@media (max-width: 750px){
+    footer {
+    min-height: 7.8125vw;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background-color: #000031;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+}
 </style>

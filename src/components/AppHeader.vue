@@ -14,12 +14,12 @@
                    </div>
                          <div v-bind:class="{nav_open:openOb}"  class="nav">
                                 <div class="nav-block-value">
-                                <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
-                                <route-link :to="'/'" class="header__nav">Курс валют</route-link>
+                                <route-link v-on:click="open" :to="'/'" class="header__nav">Обмен валют</route-link>
+                                <route-link v-on:click="open" :to="'/'" class="header__nav">Курс валют</route-link>
                                 </div>
                                 <div class="nav-block-singin">
-                                <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
-                                <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
+                                <router-link :to="'/auth'"><div v-on:click="open" class="header-login">Войти</div></router-link>
+                                <router-link :to="'/auth'"><div v-on:click="open" class="header-register">Зарегистрироваться</div></router-link>
                                 </div>
                          </div>
                         </div>
@@ -197,7 +197,7 @@ export default{
     height: size(40, 750);
     position: absolute;
     top: size(20, 750);
-    right: size(40, 750);
+    right: size(50, 750);
 }
     .nav{  
         top:-100%;
@@ -273,7 +273,7 @@ export default{
         height: 30%;
 }
  .header-logo{
-        width: size(150, 750);
+        width: size(250, 750);
         height: size(20, 750);
     }
        .container{
