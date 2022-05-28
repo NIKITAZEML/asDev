@@ -1,11 +1,12 @@
 <template>
-
+        <div class="wrapper">
             <div class="main">
                 <input type="checkbox" id="chk" aria-hidden="true">
                 <div class="signup">
                     <form>
                         <label for="chk" aria-hidden="true">Регистрация</label>
                         <input type="text" name="txt" placeholder="Логин" required="">
+                        <input type="email" name="eml" placeholder="Email" required="">
                         <input type="password" name="pswd" placeholder="Пароль" required="">
                         <input type="password" name="pswd" placeholder="Повторите пароль" required="">
                         <button class="signup-button">Регистрация</button>
@@ -14,14 +15,14 @@
                 <div class="login">
                     <form>
                         <label for="chk" aria-hidden="true">Войти</label>
-                        <input type="text" name="txt" placeholder="Логин" required="">
+                        <input type="email" name="eml" placeholder="Email" required="">
                         <input type="password" name="pswd" placeholder="Пароль" required="">
                         <button class="login-button">Войти</button>
                         <img src="../assets/images/logologin.png" >
                     </form>
                 </div>
             </div>
-
+        </div>
 </template>
 
 <script>
@@ -33,13 +34,16 @@
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
 
+    .wrapper{
+        display: flex;
+        justify-content: center;
+    }
 
     .main{
         width: size(510, 1920);
-        height: size(600, 1920) !important;
+        height: size(600, 1920);
         overflow: hidden;
         box-shadow: 5px 20px 50px #000;
-        margin: size(100, 1920)  auto;
     }
 
     #chk{
@@ -47,8 +51,8 @@
     }
     .signup{
         position: relative;
-        width:100%;
-        height: 100%;
+        width: auto;
+        height: auto;
     }
     label{
         color: #fff;
@@ -126,7 +130,7 @@
     .login{
         height: size(600, 1920);
         background: #eee;
-        transform: translateY(size(-140, 1920));
+        transform: translateY(size(40, 1920));
         transition: .8s ease-in-out;
         form{
             display: flex;
@@ -142,7 +146,7 @@
     }
 
     #chk:checked ~ .login{
-        transform: translateY(size(-570, 1920));
+        transform: translateY(size(-465, 1920));
     }
     #chk:checked ~ .login label{
         transform: scale(1);
