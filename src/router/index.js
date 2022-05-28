@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView'
 import AuthView from "@/views/AuthView"
-import AccountView from "@/views/AccountView";
+import AccountView from "@/views/AccountView"
+import TradeView from "@/views/TradeView";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/account',
     name: 'AccountView',
     component: AccountView
+  },
+  {
+    path: '/trade',
+    name: 'TradeView',
+    component: TradeView
   },
 ]
 
