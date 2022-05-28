@@ -27,8 +27,8 @@ export default {
     height: 100vh;
     background: #1D114F;
   }
-  @media (max-width: 750px){
-    #app{ height:auto;}
-  }
+  // @media (max-width: 750px){
+  //   #app{ height:auto;}
+  // }
 </style>
 

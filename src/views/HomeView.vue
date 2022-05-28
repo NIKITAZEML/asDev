@@ -52,22 +52,27 @@
           </div>
       </div>
       <div class="crypto-stats">
-        <span class="crypto-stats__text">Название </span>
-        <span class="crypto-stats__text">Последняя цена</span>
-        <span class="crypto-stats__text">Стоимость 24 часа назад</span>
-        <span class="crypto-stats__text">Наивысшая стоимость</span>
-      </div>
-      <div class="crypto-stats-cards">
         <div class="stats-card">
+          <span class="crypto-stats__text">Название </span>
           <div class="stats-card-icon">
-          <img src="../assets/images/icons/btk.png" alt="">
-          <span class="stats-card__name">BNB</span>
+            <img src="../assets/images/icons/btk.png" alt="">
+            <span class="stats-card__name">BNB</span>
           </div>
-          <span class="stats-card__price">20 100 ₽</span>
-          <span class="stats-card__timeprice">20 500 ₽</span>
-          <span class="stats-card__largeprice">3 281 818M ₽</span>
+        </div>
+        <div class="stats-card">
+           <span class="crypto-stats__text">Последняя цена</span>
+            <span class="stats-card__price">20 100 ₽</span>
+        </div>
+        <div class="stats-card">
+           <span class="crypto-stats__text">Стоимость 24 часа назад</span>
+           <span class="stats-card__timeprice">20 500 ₽</span>
+        </div>
+         <div class="stats-card">
+           <span class="crypto-stats__text">Наивысшая стоимость</span>
+            <span class="stats-card__largeprice">3 281 818M ₽</span>
         </div>
       </div>
+    
       <div class="crypto-register__title">
         <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
         <div class="register-title__button">Начать</div>
@@ -346,6 +351,7 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 
   .crypto-stats__text{
     font-weight: 600;
+    margin-bottom: size(20, 1920);
     font-size: size(16, 1920);
     line-height: size(19, 1920);
     color: #FFFFFF;
@@ -356,8 +362,8 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
     align-items: center;
     width: size(360, 1920);
     img{
-      width: size(40, 1920);
-      height: size(40, 1920);
+      width: 30%;
+      height: auto;
       margin-right: size(10, 1920);
     }
   }
@@ -410,7 +416,13 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;
   }
-  
+  .stats-card{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: size(50, 1920);
+    justify-content: space-between;
+  }
   .register-title__button:hover{
      background-color: #6d44b8;
   color: white;
@@ -447,9 +459,8 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     width: 100%;
-    margin-bottom: size(40, 1920);
+    margin-bottom: size(15, 750);
   }
   .main__title{
     font-weight: 400;
@@ -469,13 +480,400 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
   }
   .main-button__container{
     width: 100%;
+    flex-direction: column;
   }
   .col-3{
-    width: 40%;
+    width: 70%;
   }
   .main-button__email{
     width: 100%;
     height: size(20, 750);
+    
+  }
+  .main-button__register{
+    width: size(300, 750);
+    margin-bottom: size(30, 750);
+  }
+   .main-button__email{
+    width: size(290, 750);
+    height: size(44, 750);
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
+    width: 100%;
+    &::placeholder{
+      font-weight: 600;
+      font-size: size(15, 750);
+      line-height: size(18, 750);
+      color: #8A8A8A;
+    }
+}
+  .main-button__register{
+    background: #FFFFFF;
+    text-align: center;
+    font-weight: 600;
+    font-size: size(16, 750);
+    line-height: size(19, 750);
+    color: #000000;
+    padding: size(12, 750) size(17, 750);
+    -moz-border-radius: 2px;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
+    margin-top: size(15, 750);
+  }
+  .crypto-cards{
+    flex-direction: column;
+  }
+
+  .crypto-cards__cardsell, .crypto-cards__cardreceive{
+    display: flex;
+    height: size(44, 750);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: size(20, 750);
+    input {
+      padding-left: size(17, 750);
+      width: size(237, 750);
+      height: size(44, 750);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 750);
+      line-height: size(18, 750);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 750);
+      height: size(44, 750);
+    }
+  }
+
+  .crypto-cards__cardreg{
+    display: flex;
+    height: size(44, 750);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: size(20, 750);
+    input {
+      padding-left: size(17, 750);
+      width: size(237, 750);
+      height: size(44, 750);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 750);
+      line-height: size(18, 750);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 750);
+      height: size(44, 750);
+    }
+
+  }
+  .crypto-cards__button{
+    width: size(229, 750);
+    height: size(44, 750);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: size(16, 750);
+    line-height: size(19, 750);
+    color: black;
+     transition: 0.2s ease-out;
+     cursor: pointer;
+     border-radius: 5px;
+     background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
+  }
+  .crypto-title{
+    display: flex;
+    justify-content: space-between;
+  }
+  .crypto-title__text{
+    font-weight: 600;
+    font-size: size(30, 750);
+    line-height: size(35, 750);
+    color: #FFFFFF;
+  }
+  .crypto-checkall__text{
+    display: none;
+  }
+  .crypto-checkall{
+    display: flex;
+    align-items: center;
+    img{
+      width: size(23, 750);
+      height: size(23, 750);
+    }
+  }
+  .crypto-title__text {
+    text-align: center;
+}
+.register-title__button{
+    width: size(166, 750);
+    height: size(50, 750);
+    margin: size(30, 750) 0 size(66, 750) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #46DFDD;
+    font-weight: 600;
+    font-size: size(16, 750);
+    line-height: size(19, 750);
+    color: black;
+     transition: all 1s ease-out;
+     cursor: pointer;
+     border-radius: 5px;
+ background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
+  }
+  .crypto-stats__text{
+    font-weight: 600;
+    font-size: size(20, 750);
+    line-height: size(19, 750);
+    color: #FFFFFF;
+  }
+ 
+  .crypto-stats{
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .stats-card{
+    width: 40%;
+    margin-bottom: size(50, 750);
+  }
+  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
+    font-weight: 400;
+    font-size: size(20, 750);
+    line-height: size(23, 750);
+    color: #FFFFFF;
+    align-items: center;
+  }
+}
+@media (max-width: 486px){
+ 
+  .main-container__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: size(15, 750);
+  }
+  .main__title{
+    font-weight: 400;
+    font-size: size(48, 486);
+    line-height: size(56, 486);
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  .main__little{
+    font-weight: 600;
+    font-size: size(48, 486);
+    line-height: size(56, 486);
+    color: #FFFFFF;
+     text-align: center;
+
+  }
+  .main-button__container{
+    width: 100%;
+    flex-direction: column;
+  }
+  .col-3{
+    width: 70%;
+  }
+  .main-button__email{
+    width: 100%;
+    height: size(20, 486);
+    
+  }
+  .main-button__register{
+    width: size(300, 486);
+    margin-bottom: size(30, 486);
+  }
+   .main-button__email{
+    width: size(290, 486);
+    height: size(44, 486);
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
+    width: 100%;
+    &::placeholder{
+      font-weight: 600;
+      font-size: size(15, 486);
+      line-height: size(18, 486);
+      color: #8A8A8A;
+    }
+}
+  .main-button__register{
+    background: #FFFFFF;
+    text-align: center;
+    font-weight: 600;
+    font-size: size(16, 486);
+    line-height: size(19, 486);
+    color: #000000;
+    padding: size(12, 486) size(17, 486);
+    -moz-border-radius: 2px;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
+    margin-top: size(15, 486);
+  }
+  .crypto-cards{
+    flex-direction: column;
+  }
+
+  .crypto-cards__cardsell, .crypto-cards__cardreceive{
+    display: flex;
+    height: size(44, 486);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: size(20, 486);
+    input {
+      padding-left: size(17, 486);
+      width: size(237, 486);
+      height: size(44, 486);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 486);
+      line-height: size(18, 486);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 486);
+      height: size(44, 486);
+    }
+  }
+
+  .crypto-cards__cardreg{
+    display: flex;
+    height: size(44, 486);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: size(20, 486);
+    input {
+      padding-left: size(17, 486);
+      width: size(237, 486);
+      height: size(44, 486);
+      border: 0;
+      outline: none;
+      font-weight: 600;
+      font-size: size(15, 486);
+      line-height: size(18, 486);
+      color: #8A8A8A;
+    }
+    select{
+      width: size(93, 486);
+      height: size(44, 486);
+    }
+
+  }
+  .crypto-cards__button{
+    width: size(229, 486);
+    height: size(44, 486);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: size(16, 486);
+    line-height: size(19, 486);
+    color: black;
+     transition: 0.2s ease-out;
+     cursor: pointer;
+     border-radius: 5px;
+     background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
+  }
+  .crypto-title{
+    display: flex;
+    justify-content: space-between;
+  }
+  .crypto-title__text{
+    font-weight: 600;
+    font-size: size(30, 486);
+    line-height: size(35, 486);
+    color: #FFFFFF;
+  }
+  .crypto-checkall__text{
+    display: none;
+  }
+  .crypto-checkall{
+    display: flex;
+    align-items: center;
+    img{
+      width: size(23, 486);
+      height: size(23, 486);
+    }
+  }
+  .crypto-title__text {
+    text-align: center;
+}
+.register-title__button{
+    width: size(166, 486);
+    height: size(50, 486);
+    margin: size(30, 486) 0 size(66, 486) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #46DFDD;
+    font-weight: 600;
+    font-size: size(16, 486);
+    line-height: size(19, 486);
+    color: black;
+     transition: all 1s ease-out;
+     cursor: pointer;
+     border-radius: 5px;
+ background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
+  }
+  .crypto-stats__text{
+    font-weight: 600;
+    font-size: size(20, 486);
+    line-height: size(19, 486);
+    color: #FFFFFF;
+  }
+ 
+  .crypto-stats{
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .stats-card{
+    width: 40%;
+    margin-bottom: size(50, 486);
+  }
+  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
+    font-weight: 400;
+    font-size: size(20, 486);
+    line-height: size(23, 750);
+    color: #FFFFFF;
+    align-items: center;
+  }
+  .container{
+    width: 90vw;
   }
 }
 </style>

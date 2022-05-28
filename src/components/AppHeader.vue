@@ -14,8 +14,8 @@
                    </div>
                          <div v-bind:class="{nav_open:openOb}"  class="nav">
                                 <div class="nav-block-value">
-                                <route-link v-on:click="open" :to="'/'" class="header__nav">Обмен валют</route-link>
-                                <route-link v-on:click="open" :to="'/'" class="header__nav">Курс валют</route-link>
+                                <router-link :to="'/trade'" class="header__nav"><span  v-on:click="open">Обмен валют</span></router-link>
+                                <router-link v-on:click="open" :to="'/course'" class="header__nav"><span v-on:click="open">Курс валют</span></router-link>
                                 </div>
                                 <div class="nav-block-singin">
                                 <router-link :to="'/auth'"><div v-on:click="open" class="header-login">Войти</div></router-link>
@@ -34,15 +34,21 @@ export default{
     data(){
         return{
            openOb: false,
+           screenWidth: null
         }
     },
     methods:{
         open(){
+            if ( this.screenWidth = window.screen.width < 760){
            this.openOb = !this.openOb;
            if(this.openOb){
                document.body.style.overflow = "hidden"
            }else{
                 document.body.style.overflow = "auto" }
+                }
+                else {
+                   
+                }
         },
        
     }
@@ -182,10 +188,7 @@ export default{
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> erohin
     .burger-menu{
         display: none;
     }
@@ -297,8 +300,15 @@ export default{
          flex-direction: column;
        }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> erohin
+@media (max-width: 468px){
+    .container{
+        width: 90vw;
+    }
+    .nav-block{
+        margin: 0;
+    }
+    .nav-block-logo{
+        width: 30%;
+    }
+}
 </style>
