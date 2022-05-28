@@ -2,24 +2,12 @@
     <footer>
         <div class="container">
             <div class="footer">
-                <div class="footer-info">
                 <img src="../assets/images/logo.png" class="header-logo">
-                    <div class="footer-info-icons">
-                         <div class="footer-info-icon">
-                             <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/gitlab.svg" alt=""></a>
-                             <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/telegram.svg" alt=""></a>
-                             <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/github.svg" alt=""></a>
-                             <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/figma.svg" alt=""></a>
-                             <a href="#" class="footer-info-icons-link"><img class="footer-info-icons-link__img" src="@/assets/images/icons/trello.svg" alt=""></a>
-                         </div>
-                        <span class="footer-info-text__span">Разработка команды AsDev</span>
-
-                    </div>
+                        <span class="footer-info-text__span">Разработка команды AsDev© Хакатон 2022</span>
                     <div class="footer-info-text">
-                         <span class="footer-info-text__span">Политика использования</span>
-                         <span class="footer-info-text__span">Условия безопасности</span>
+                         <img src="@/assets/images/icons/File.svg" alt="">
+                         <span class="footer-info-text__span">Политика обработки персональных данных</span>
                     </div>
-                </div>
             </div>
         </div>
     </footer>
@@ -33,7 +21,13 @@
       display: flex;
       align-items: center;
       margin: 0;
-      background: #1D114F;
+      background-color: #000031;
+       align-items: center;
+  }
+  .footer{
+      display: flex;
+        align-items: center;
+        justify-content: space-between;
   }
   .header-logo{
       width: size(214, 1920);
@@ -67,18 +61,15 @@
  }
 .footer-info-text{
      display: flex;
-     flex-direction: column;
-     align-items: flex-end;
+     align-items: center;
+     img{
+         margin-right: size(8, 1920);
+     }
 }
 .footer-info-text__span{
     color: white;
     font-size: size(20, 1920);
     font-weight: 700;
 }
-.footer-info-text__span:not(:last-child){
-    margin-bottom: size(5, 1920);
-}
-.footer-info-icons-link:not(:last-child){
-    margin-right: size(10, 1920);
-}
+
 </style>
