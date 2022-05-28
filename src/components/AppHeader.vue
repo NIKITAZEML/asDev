@@ -2,19 +2,27 @@
     <header>
         <div class="container">
             <div class="header">
-                <nav >
+                <nav>
                     <div class="nav-block">
-                <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
-
-                            <div class="nav-block-value">
-                            <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
-                            <route-link :to="'/'" class="header__nav">Курс валют</route-link>
-                            </div>
-                            <div class="nav-block-singin">
-                            <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
-                            <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
-                            </div>
-                    </div>
+                   <div class="nav-block-logo">
+                        <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
+                          <transition name="fade">
+                        <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
+                         </transition>
+                        <transition name="fade" ><img v-show="openOb" src="@/assets/images/close.svg" class="burger-menu" v-on:click="open"/>
+                        </transition>
+                   </div>
+                         <div v-bind:class="{nav_open:openOb}"  class="nav">
+                                <div class="nav-block-value">
+                                <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
+                                <route-link :to="'/'" class="header__nav">Курс валют</route-link>
+                                </div>
+                                <div class="nav-block-singin">
+                                <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
+                                <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
+                                </div>
+                         </div>
+                        </div>
                 </nav>
             </div>
         </div>
@@ -74,14 +82,19 @@ export default{
 
     /*-----------------NAV-------------   */
 
-    /*nav{*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*    align-items: center;*/
-    /*    text-align: center;*/
-    /*    width: size(1440, 1920);*/
-    /*    margin: 0 auto;*/
-    /*}*/
+    nav{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+     
+    }
+    .nav{
+        width: 60%;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+    }
     .nav-block {
     display: flex;
     justify-content: space-between;
@@ -169,5 +182,118 @@ export default{
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
+<<<<<<< HEAD
 
+=======
+    .burger-menu{
+        display: none;
+    }
+    .nav-block-logo{
+        width: 20%;
+    }
+    @media (max-width: 750px){
+       
+         .burger-menu{
+    display: block;
+    width: size(40, 750);
+    height: size(40, 750);
+    position: absolute;
+    top: size(20, 750);
+    right: size(40, 750);
+}
+    .nav{  
+        top:-100%;
+         transition: 0.5s ease-out;
+        left: 0;
+        margin: 0;
+        flex-direction: column;
+        z-index: 9;
+        position: absolute;
+        height: 100%;
+        background-color: rgb(61, 14, 75);
+        width: 100%;
+         padding: size(25, 750);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+    }
+    .nav_open{
+         top:size(80, 750);
+    }
+      .header__nav{
+        font-style: normal;
+        font-weight: 400;
+        font-size: size(60, 750);
+        line-height: size(28, 1920);
+        color: #FFFFFF;
+        margin: 0;
+        margin-bottom: size(60, 750);
+    }
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        height: size(80, 750);
+        z-index: 999;
+    }
+    .header-login{
+        margin: 0;
+        border: 1px solid #BCD0E5;
+        font-family: 'Raleway';
+        padding: size(12, 750) size(28, 750);
+        font-weight: 400;
+        font-size: size(20, 750);
+        line-height: size(19, 750);
+        color: #FFFFFF;
+        width: 100%;
+        height: size(60, 750);
+         vertical-align: center;
+        text-align: center;
+        margin-bottom: size(30, 750);
+    }
+    .header-register{
+          font-size: size(20, 750);
+           padding: size(12, 750) size(28, 750);
+           line-height: size(19, 750);
+           width: 100%;
+           height: size(60, 750);
+           vertical-align: center;
+           text-align: center;
+           margin-left: 0;
+    }
+    a{
+        width: 100%;
+    }
+    .nav-block{
+     display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        vertical-align: center;
+        height: 30%;
+}
+ .header-logo{
+        width: size(150, 750);
+        height: size(20, 750);
+    }
+       .container{
+        width: size(700, 750);
+        margin: 0 auto;
+    }
+    .nav-block-value{
+         display: flex;
+      
+         width: 80%;
+         flex-direction: column;
+    }
+       .nav-block-singin{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 80%;
+         flex-direction: column;
+       }
+    }
+>>>>>>> erohin
 </style>

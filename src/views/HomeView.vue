@@ -279,25 +279,30 @@ input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%;
   .crypto-cards__button{
     width: size(229, 1920);
     height: size(44, 1920);
-    background: #46DFDD;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: #000000;
+    color: black;
      transition: 0.2s ease-out;
      cursor: pointer;
+     border-radius: 5px;
+     background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
   }
 .crypto-cards__button:hover{
-  background-color: #6d44b8;
   color: white;
   -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
- transition: 0.2s ease-out;
  cursor: pointer;
+ color: white;
+   transition: all 1s ease-out;
+ background: rgb(60, 52, 172);
+  box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
 }
   /*------Crypto----Popylaryty------*/
 
@@ -397,17 +402,24 @@ box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: #000000;
-     transition: 0.2s ease-out;
+    color: black;
+     transition: all 1s ease-out;
      cursor: pointer;
+     border-radius: 5px;
+ background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
   }
+  
   .register-title__button:hover{
      background-color: #6d44b8;
   color: white;
   -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
- transition: 0.2s ease-out;
+  transition: all 1s ease-out;
+ background: rgb(60, 52, 172);
+  box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
  cursor: pointer;
   }
 
