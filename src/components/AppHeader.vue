@@ -4,15 +4,15 @@
             <div class="header">
                 <nav>
                     <div class="nav-block">
-                <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
-                      <transition name="fade">
-                    <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
-                     </transition>
-                    <transition name="fade" ><img v-show="openOb" src="@/assets/images/close.svg" class="burger-menu" v-on:click="open"/>
-                    </transition>
-              
-
-                         <div v-bind:class="{nav_open:openOb}" class="nav">
+                   <div class="nav-block-logo">
+                        <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
+                          <transition name="fade">
+                        <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
+                         </transition>
+                        <transition name="fade" ><img v-show="openOb" src="@/assets/images/close.svg" class="burger-menu" v-on:click="open"/>
+                        </transition>
+                   </div>
+                         <div v-bind:class="{nav_open:openOb}"  class="nav">
                                 <div class="nav-block-value">
                                 <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
                                 <route-link :to="'/'" class="header__nav">Курс валют</route-link>
@@ -82,14 +82,19 @@ export default{
 
     /*-----------------NAV-------------   */
 
-    /*nav{*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*    align-items: center;*/
-    /*    text-align: center;*/
-    /*    width: size(1440, 1920);*/
-    /*    margin: 0 auto;*/
-    /*}*/
+    nav{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+     
+    }
+    .nav{
+        width: 60%;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+    }
     .nav-block {
     display: flex;
     justify-content: space-between;
@@ -180,6 +185,9 @@ export default{
     .burger-menu{
         display: none;
     }
+    .nav-block-logo{
+        width: 20%;
+    }
     @media (max-width: 750px){
        
          .burger-menu{
@@ -188,7 +196,7 @@ export default{
     height: size(40, 750);
     position: absolute;
     top: size(20, 750);
-    right: size(20, 750);
+    right: size(40, 750);
 }
     .nav{  
         top:-100%;
@@ -202,6 +210,8 @@ export default{
         background-color: rgb(61, 14, 75);
         width: 100%;
          padding: size(25, 750);
+         display: flex;
+         flex-direction: column;
          justify-content: center;
     }
     .nav_open{
@@ -214,6 +224,7 @@ export default{
         line-height: size(28, 1920);
         color: #FFFFFF;
         margin: 0;
+        margin-bottom: size(60, 750);
     }
       .header{
         display: flex;
@@ -236,6 +247,7 @@ export default{
         height: size(60, 750);
          vertical-align: center;
         text-align: center;
+        margin-bottom: size(30, 750);
     }
     .header-register{
           font-size: size(20, 750);
@@ -255,7 +267,6 @@ export default{
         justify-content: space-between;
         align-items: center;
         text-align: center;
-       
         vertical-align: center;
         height: 30%;
 }
@@ -267,5 +278,18 @@ export default{
         width: size(700, 750);
         margin: 0 auto;
     }
+    .nav-block-value{
+         display: flex;
+      
+         width: 80%;
+         flex-direction: column;
+    }
+       .nav-block-singin{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 80%;
+         flex-direction: column;
+       }
     }
 </style>
