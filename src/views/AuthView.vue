@@ -36,7 +36,7 @@
 
     .main{
         width: size(510, 1920);
-        height: size(550, 1920);
+        height: size(600, 1920) !important;
         overflow: hidden;
         box-shadow: 5px 20px 50px #000;
         margin: size(100, 1920)  auto;
@@ -79,7 +79,7 @@
     .signup-button{
         width: size(334, 1920);
         height: size(40, 1920);
-        margin: size(40, 1920) auto;
+        margin: 0 auto;
         justify-content: center;
         align-items: center;
         display: flex;
@@ -126,7 +126,7 @@
     .login{
         height: size(600, 1920);
         background: #eee;
-        transform: translateY(size(-150, 1920));
+        transform: translateY(size(-140, 1920));
         transition: .8s ease-in-out;
         form{
             display: flex;
@@ -142,7 +142,7 @@
     }
 
     #chk:checked ~ .login{
-        transform: translateY(size(-610, 1920));
+        transform: translateY(size(-570, 1920));
     }
     #chk:checked ~ .login label{
         transform: scale(1);
