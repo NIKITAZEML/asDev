@@ -104,8 +104,29 @@ export default{
         font-size: size(16, 1920);
         line-height: size(19, 1920);
         color: #FFFFFF;
+         -moz-border-radius: 2px;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
     }
-
+  .header-login:hover {
+    background-color: #6d44b8;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: rgb(0, 0, 0);
+    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 800;
+    color: white;
+     padding: size(20, 1920) size(30, 1920);
+    }
     .header-register{
         margin-left: size(24, 1920);
         background: #FFFFFF;
@@ -114,6 +135,27 @@ export default{
         font-size: size(16, 1920);
         line-height: size(19, 1920);
         color: #000000;
+         -moz-border-radius: 2px;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
+    }
+     .header-register:hover {
+    background-color: #6d44b8;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: rgb(0, 0, 0);
+    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 800;
+     padding: size(20, 1920) size(30, 1920);
+     color: white;
     }
     .burger-menu{
         display: none;
@@ -129,7 +171,8 @@ export default{
     right: size(20, 750);
 }
     nav{  
-        top:size(80, 750);
+        top:-100%;
+         transition: 0.5s ease-out;
         left: 0;
         margin: 0;
         flex-direction: column;
@@ -138,12 +181,11 @@ export default{
         height: 100%;
         background-color: rgb(61, 14, 75);
         width: 100%;
-         display: none !important;
          padding: size(25, 750);
          justify-content: center;
     }
     .nav_open{
-        display: flex !important;
+         top:size(80, 750);
     }
       .header__nav{
         font-style: normal;
@@ -183,6 +225,10 @@ export default{
            height: size(60, 750);
            vertical-align: center;
            text-align: center;
+           margin-left: 0;
+    }
+    a{
+        width: 100%;
     }
     .nav-block{
      display: flex;

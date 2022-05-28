@@ -141,8 +141,7 @@ export default {
   }
 
   .main-button__register{
-    width: size(196, 1920);
-    height: size(43, 1920);
+   
     background: #FFFFFF;
     text-align: center;
     font-weight: 600;
@@ -151,8 +150,32 @@ export default {
     color: #000000;
     padding: size(12, 1920) size(17, 1920);
     margin-left: size(31, 1920);
+    -moz-border-radius: 2px;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
   }
-
+  .main-button__register:hover {
+   
+     
+    background-color: #6d44b8;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: rgb(0, 0, 0);
+    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 800;
+     padding: size(20, 1920) size(30, 1920);
+     color: white;
+     text-align: center;
+     vertical-align: center;
+    }
   /*------------TEXT-STYLE---------------*/
 
   .main__title{
