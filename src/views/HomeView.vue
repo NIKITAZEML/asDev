@@ -279,30 +279,30 @@ input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%;
   .crypto-cards__button{
     width: size(229, 1920);
     height: size(44, 1920);
-    background: #46DFDD;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: white;
+    color: black;
      transition: 0.2s ease-out;
      cursor: pointer;
-     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(162,104,186,1) 0%, rgba(47,179,205,1) 100%);
-border-radius: 5px;
+     border-radius: 5px;
+     background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
   }
 .crypto-cards__button:hover{
-  background-color: #6d44b8;
   color: white;
   -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
- transition: 0.2s ease-out;
- background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,179,205,1) 0%, rgba(162,104,186,1) 100%);
  cursor: pointer;
+ color: white;
+   transition: all 1s ease-out;
+ background: rgb(60, 52, 172);
+  box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
 }
   /*------Crypto----Popylaryty------*/
 
@@ -402,22 +402,24 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,179,205,1) 0%, rgb
     font-weight: 600;
     font-size: size(16, 1920);
     line-height: size(19, 1920);
-    color: white;
-     transition: 0.2s ease-out;
+    color: black;
+     transition: all 1s ease-out;
      cursor: pointer;
      border-radius: 5px;
-     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(162,104,186,1) 0%, rgba(47,179,205,1) 100%);
+ background: #49DEDA;
+  box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+ transition: all .5s linear 0s;
   }
+  
   .register-title__button:hover{
      background-color: #6d44b8;
   color: white;
   -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 -moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
 box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
- transition: 0.2s ease-out;
- background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,179,205,1) 0%, rgba(162,104,186,1) 100%);
+  transition: all 1s ease-out;
+ background: rgb(60, 52, 172);
+  box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
  cursor: pointer;
   }
 
