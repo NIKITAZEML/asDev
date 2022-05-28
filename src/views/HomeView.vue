@@ -8,7 +8,12 @@
         <span class="main__little">CryptoDev</span>
       </div>
         <div class="main-button__container">
-          <input type="email" class="main-button__email"  placeholder="Введите email">
+         <div class="col-3">
+            <input type="email" class="main-button__email"  placeholder="Введите email">
+          <span class="focus-border">
+                <i></i>
+              </span>
+         </div>
           <router-link for="chk"  :to="'/auth'"><div class="main-button__register">Зарегистрироваться </div></router-link>
         </div>
       </div>
@@ -132,16 +137,40 @@ export default {
     border: 0;
     outline: none;
     padding-left: size(17, 1920);
+    border: 1px solid #ccc; padding: 7px 14px 9px; transition: 0.4s;
     &::placeholder{
       font-weight: 600;
       font-size: size(15, 1920);
       line-height: size(18, 1920);
       color: #8A8A8A;
     }
+      .main-button__email:hover{
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);}
   }
-
+.main-button__email ~ .focus-border:before,
+.main-button__email ~ .focus-border:after{content: ""; position: absolute; top: 0; right: 0; width: 0; height: 3px; background-color: #6d44b8; transition: 0.2s; transition-delay: 0.2s;}
+.main-button__email ~ .focus-border:after{top: auto; bottom: 0; right: auto; left: 0; transition-delay: 0.6s;}
+.main-button__email ~ .focus-border i:before,
+.main-button__email ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 0; background-color: #6d44b8; transition: 0.2s;}
+.main-button__email ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0; transition-delay: 0.4s;}
+.main-button__email:focus ~ .focus-border:before,
+.main-button__email:focus ~ .focus-border:after{width: 100%; transition: 0.2s; transition-delay: 0.6s; }
+.main-button__email:focus ~ .focus-border:after{transition-delay: 0.2s;}
+.main-button__email:focus ~ .focus-border i:before,
+.main-button__email:focus ~ .focus-border i:after{height: 100%; transition: 0.2s;}
+.main-button__email:focus ~ .focus-border i:after{transition-delay: 0.4s;}
+:focus{outline: none;}
+.main-button__email:focus{
+-webkit-box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);
+-moz-box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);
+box-shadow: 4px 4px 8px 12px rgba(59, 40, 225, 0.2);}
+/* necessary to give position: relative to parent. */
+input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+.col-3{ position: relative;}
+:focus{outline: none;}
   .main-button__register{
-   
     background: #FFFFFF;
     text-align: center;
     font-weight: 600;
@@ -164,14 +193,13 @@ export default {
   }
   .main-button__register:hover {
    
-     
+      transform: scale(1.2);
     background-color: #6d44b8;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: rgb(0, 0, 0);
     -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-weight: 800;
-     padding: size(20, 1920) size(30, 1920);
      color: white;
      text-align: center;
      vertical-align: center;
@@ -259,8 +287,18 @@ export default {
     font-size: size(16, 1920);
     line-height: size(19, 1920);
     color: #000000;
+     transition: 0.2s ease-out;
+     cursor: pointer;
   }
-
+.crypto-cards__button:hover{
+  background-color: #6d44b8;
+  color: white;
+  -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+-moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+ transition: 0.2s ease-out;
+ cursor: pointer;
+}
   /*------Crypto----Popylaryty------*/
 
   .crypto-title{
@@ -360,6 +398,17 @@ export default {
     font-size: size(16, 1920);
     line-height: size(19, 1920);
     color: #000000;
+     transition: 0.2s ease-out;
+     cursor: pointer;
+  }
+  .register-title__button:hover{
+     background-color: #6d44b8;
+  color: white;
+  -webkit-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+-moz-box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+box-shadow: 4px 4px 44px 0px rgba(59, 40, 225, 0.65);
+ transition: 0.2s ease-out;
+ cursor: pointer;
   }
 
 </style>

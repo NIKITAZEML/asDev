@@ -112,11 +112,11 @@ export default{
     -webkit-transition: 0.2s ease-out;
     background-clip: padding-box;
     display: inline-block;
-    font-family: 'Raleway', sans-serif;
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
+    // анимации
   .header-login:hover {
     background-color: #6d44b8;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -125,7 +125,19 @@ export default{
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-weight: 800;
     color: white;
-     padding: size(20, 1920) size(30, 1920);
+     transform: scale(1.2);
+     border: 0;
+     border-radius: 2px;
+    }
+     .header-register:hover {
+    background-color: #6d44b8;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: rgb(0, 0, 0);
+    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: 800;
+    transform: scale(1.1);
+     color: white;
     }
     .header-register{
         margin-left: size(24, 1920);
@@ -146,16 +158,6 @@ export default{
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.2s ease-out;
-    }
-     .header-register:hover {
-    background-color: #6d44b8;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: rgb(0, 0, 0);
-    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    font-weight: 800;
-     padding: size(20, 1920) size(30, 1920);
-     color: white;
     }
     .burger-menu{
         display: none;
