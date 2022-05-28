@@ -182,6 +182,10 @@ export default{
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> erohin
     .burger-menu{
         display: none;
     }
@@ -221,7 +225,8 @@ export default{
         font-style: normal;
         font-weight: 400;
         font-size: size(60, 750);
-        line-height: size(28, 1920);
+        line-height: size(28,
+         1920);
         color: #FFFFFF;
         margin: 0;
         margin-bottom: size(60, 750);
@@ -292,4 +297,8 @@ export default{
          flex-direction: column;
        }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> erohin
 </style>
