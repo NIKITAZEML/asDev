@@ -182,7 +182,10 @@ export default{
     text-transform: uppercase;
     transition: 0.2s ease-out;
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> erohin
     .burger-menu{
         display: none;
     }
@@ -294,5 +297,8 @@ export default{
          flex-direction: column;
        }
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> erohin
 </style>
