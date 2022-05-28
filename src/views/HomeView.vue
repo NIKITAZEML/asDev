@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="crypto-register__title">
-        <span class="crypto-title__text">Зарегистрируйтесь сейчас и бесплатно создайте свой криптопортфель!</span>
+        <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
         <div class="register-title__button">Начать</div>
       </div>
     </div>
