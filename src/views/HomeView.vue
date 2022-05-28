@@ -24,20 +24,26 @@
       <div class="crypto-cards">
         <div class="crypto-cards__cardsell">
         <input type="number" placeholder="Потратите">
-          <select>
-            <option>1</option>
+          <select v-for='(currencies) in this.$store.state.currencies' >
+              <option v-for='(currencie, index) in currencies' :selected="0">
+                {{  currencie.CoinInfo.Internal }} {{index}}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__cardreceive">
         <input type="number" placeholder="Получите">
-          <select>
-            <option>2</option>
+          <select v-for='currencies in this.$store.state.currencies'>
+              <option v-for='currencie in currencies'>
+                {{  currencie.CoinInfo.Internal }}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__cardreg">
         <input type="number" placeholder="Получите при регистрации">
-          <select>
-            <option>3</option>
+         <select v-for='currencies in this.$store.state.currencies' >
+              <option v-for='currencie in currencies'>
+                {{  currencie.CoinInfo.Internal }}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__button">
@@ -54,20 +60,23 @@
       <div class="crypto-stats">
         <span class="crypto-stats__text">Название </span>
         <span class="crypto-stats__text">Последняя цена</span>
-        <span class="crypto-stats__text">Стоимость 24 часа назад</span>
-        <span class="crypto-stats__text">Наивысшая стоимость</span>
+        <span class="crypto-stats__text">Изменение за 24 часа</span>
+        <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
       </div>
       <div class="crypto-stats-cards">
-        <div class="stats-card">
-          <div class="stats-card-icon">
-          <img src="../assets/images/icons/btk.png" alt="">
-          <span class="stats-card__name">BNB</span>
+        <div v-for='currencies in this.$store.state.currencies'>
+        <div class="stats-card" v-for='currencie in currencies'>
+           <div class="stats-card-icon">
+            <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
+            <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
           </div>
-          <span class="stats-card__price">20 100 ₽</span>
-          <span class="stats-card__timeprice">20 500 ₽</span>
-          <span class="stats-card__largeprice">3 281 818M ₽</span>
+          <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
+          <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+          <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
         </div>
       </div>
+      </div>
+      
       <div class="crypto-register__title">
         <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
         <div class="register-title__button">Начать</div>
@@ -79,12 +88,31 @@
 
 <script>
 // @ is an alias to /src
+import {mapActions} from 'vuex';
 
 
 export default {
   name: 'HomeView',
+  data(){
+    return{
+        firstSelect: '',
+    }
+  },
+  methods:{
+      ...mapActions([
+        'GET_CURRENCIES'
+      ]),
+      getw(){
+      console.log(this.firstSelect)
+    }
+  },
+  mounted(){
+    this.GET_CURRENCIES(),
+    console.log();
+  },
   components: {
-  }
+
+  },
 }
 </script>
 
