@@ -2,8 +2,6 @@
     <header>
         <div class="container">
             <div class="header">
-                <nav v-bind:class="{nav_open:openOb}">
-                    <div class="nav-block">
                 <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
                       <transition name="fade">
                     <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
@@ -11,15 +9,12 @@
                     <transition name="fade" ><img v-show="openOb" src="@/assets/images/close.svg" class="burger-menu" v-on:click="open"/>
                     </transition>
               
-
-                            <div class="nav-block-value">
+                <nav v-bind:class="{nav_open:openOb}">
+                        <div class="nav-block">
                             <route-link :to="'/'" class="header__nav">Обмен валют</route-link>
                             <route-link :to="'/'" class="header__nav">Курс валют</route-link>
-                            </div>
-                            <div class="nav-block-singin">
                             <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
                             <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
-                            </div>
                         </div>
                 </nav>
             </div>
@@ -67,7 +62,6 @@ export default{
         align-items: center;
         text-align: center;
         height: size(108, 1920);
-        margin: 0 auto;
         z-index: 999;
     }
 
@@ -80,21 +74,17 @@ export default{
 
     /*-----------------NAV-------------   */
 
-    /*nav{*/
-    /*    display: flex;*/
-    /*    justify-content: space-between;*/
-    /*    align-items: center;*/
-    /*    text-align: center;*/
-    /*    width: size(1440, 1920);*/
-    /*    margin: 0 auto;*/
-    /*}*/
-    .nav-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    width: size(1440, 1920);
-    margin: 0 auto;
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+.nav-block{
+     display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
 }
     .header__nav{
         margin-left: size(24, 1920);
@@ -105,8 +95,8 @@ export default{
         color: #FFFFFF;
     }
 
-
     .header-login{
+        margin-left: size(252, 1920);
         border: 1px solid #BCD0E5;
         font-family: 'Raleway';
         padding: size(12, 1920) size(28, 1920);
@@ -115,16 +105,17 @@ export default{
         line-height: size(19, 1920);
         color: #FFFFFF;
          -moz-border-radius: 2px;
-        -moz-transition: 0.2s ease-out;
-        -ms-transition: 0.2s ease-out;
-        -o-transition: 0.2s ease-out;
-        -webkit-border-radius: 2px;
-        -webkit-transition: 0.2s ease-out;
-        background-clip: padding-box;
-        display: inline-block;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -webkit-border-radius: 2px;
+    -webkit-transition: 0.2s ease-out;
+    background-clip: padding-box;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s ease-out;
     }
     // анимации
   .header-login:hover {
@@ -136,10 +127,6 @@ export default{
     font-weight: 800;
     color: white;
      transform: scale(1.2);
-     border: 0;
-     border-radius: 2px;
-    }
-     .header-register:hover {
     background-color: #6d44b8;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: rgb(0, 0, 0);
@@ -149,14 +136,8 @@ export default{
     transform: scale(1.1);
      color: white;
     }
-     .nav-block-singin{
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         width: size(360, 1920);
-     }
-
     .header-register{
+        margin-left: size(24, 1920);
         background: #FFFFFF;
         padding: size(12, 1920) size(17, 1920);
         font-weight: 600;
