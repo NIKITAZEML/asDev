@@ -5,7 +5,7 @@
         <nav>
           <div class="nav-block">
             <div class="nav-block-logo">
-              <router-link class="header-logo" to="/account"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
+              <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
               <transition name="fade">
                 <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
               </transition>
@@ -14,12 +14,18 @@
             </div>
             <div v-bind:class="{nav_open:openOb}"  class="nav">
               <div class="nav-block-value">
-                <router-link v-on:click="open" :to="'/trade'" class="header__nav"><span>Обмен валют</span></router-link>
-                <router-link v-on:click="open" :to="'/allcoins'" class="header__nav"><span>Курс валют</span></router-link>
+                <router-link v-on:click="open" :to="'/trade'" class="header__nav"><span v-on:click="open">Обмен валют</span></router-link>
+                <router-link v-on:click="open" :to="'/allcoins'" class="header__nav"><span v-on:click="open">Курс валют</span></router-link>
               </div>
-              <div class="nav-block-singin">
+             <router-link :to='"/account"' class="header__nav">
+               <div class="user" v-on:click="open"> 
+                 <span>porverkaexample@mail.ru</span>
+                 <img src="@/assets/images/icons/User.svg" alt="">
+              </div>
+             </router-link>
+              <!-- <div class="nav-block-singin">
                 <a href="#" @click.prevent="logout"><div v-on:click="open" class="header-login">Выход</div></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </nav>
@@ -33,7 +39,8 @@ export default{
   data(){
     return{
       openOb: false,
-      screenWidth: null
+      screenWidth: null,
+      userName: localStorage.getItem('username')
     }
   },
   methods:{
@@ -61,7 +68,23 @@ export default{
 
 <style scoped lang="scss">
 @import "src/assets/styles/fonts";
-
+.user{
+  display: flex;
+  align-items: center;
+  span{
+    color: white;
+    margin-right: size(10, 1920);
+     font-style: normal;
+  font-weight: 400;
+  font-size: size(20, 1920);
+  line-height: size(28, 1920);
+  color: #FFFFFF;
+  }
+  img{
+    width: size(40, 1920);
+    height: size(40, 1920);
+  }
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .9s;
 }
@@ -202,7 +225,18 @@ nav{
 .nav-block-logo{
   width: 20%;
 }
-
+.nav-block-singin[data-v-60f72354] {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 18.75vw;
+}
+.nav-block-singin[data-v-60f72354] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+}
 @media (max-width: 750px){
 
   .burger-menu{
@@ -328,8 +362,45 @@ nav{
     width: 80%;
     flex-direction: column;
   }
+  .user{
+  display: flex;
+  align-items: center;
+  margin-bottom: size(30, 1920);
+  justify-content: center;
+  span{
+    color: white;
+    margin-right: size(10, 750);
+     font-style: normal;
+  font-weight: 400;
+  font-size: size(20, 750);
+  line-height: size(28, 750);
+  color: #FFFFFF;
+  }
+  img{
+    width: size(40, 750);
+    height: size(40, 750);
+  }
+}
 }
 @media (max-width: 468px){
+  .user{
+  display: flex;
+  align-items: center;
+   margin-bottom: size(30, 1920);
+  span{
+    color: white;
+    margin-right: size(10, 468);
+     font-style: normal;
+  font-weight: 400;
+  font-size: size(20, 468);
+  line-height: size(28, 468);
+  color: #FFFFFF;
+  }
+  img{
+    width: size(40, 468);
+    height: size(40, 468);
+  }
+}
   .container{
     width: 90vw;
   }

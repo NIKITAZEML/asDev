@@ -7,7 +7,10 @@
         <div class="account">
             <div class="container">
                 <div class="account-wrapper">
-                    <span class="account-title">Личный кабинет </span>
+                    <div class="account">
+                      <span class="account-title">Личный кабинет </span>
+                       <a href="#" @click.prevent="logout"><div v-on:click="open" class="header-login">Выход</div></a>
+                    </div>
                     <div class="account-bill">
                         <span class="account-bill__title">Мои счета</span>
                         <span class="account-bill__money">Счёт в рублях: {{rubSumm}} ₽</span>
@@ -84,6 +87,9 @@ export default {
       }
     },
   methods: {
+    logout(){
+      localStorage.clear()
+      this.$router.push('/')},
    slideData(item) {
      if(item) {
        item = item.slice(0, -5)
@@ -95,6 +101,7 @@ export default {
       setTimeout(() => {
         this.showMessage = false
       }, 2000)
+
     },
    getNew () {
      this.getMyHistory()
@@ -154,6 +161,43 @@ export default {
        cursor: pointer;
      
     }
+    .account{
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+    .header-login{
+  border: 1px solid #BCD0E5;
+  padding: size(12, 1920) size(28, 1920);
+  font-weight: 400;
+  font-size: size(16, 1920);
+  line-height: size(19, 1920);
+  color: #FFFFFF;
+  -moz-transition: 0.2s ease-out;
+  -ms-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  -webkit-border-radius: 2px;
+  -webkit-transition: 0.2s ease-out;
+  background-clip: padding-box;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s ease-out;
+}
+
+// анимации
+
+.header-login:hover {
+  background-color: #9c2e2e;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-weight: 800;
+  color: white;
+  transform: scale(1.2);
+  border: 0;
+  border-radius: 2px;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .7s;
 }

@@ -181,9 +181,26 @@ form{
 .close{
   color: #46DFDD; font-size: 2vw;
     position: absolute;
-  right: 2vw;
-  top: 1vw;
+  right:size(10, 1920);
+  top:0;
+  font-size: size(40, 1920);
   cursor: pointer;
+}
+.signup-button{
+     background: #49DEDA;
+    box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+    transition: all .2s linear 0s;
+     width: size(176, 1920);
+    padding: size(15, 1920);
+    font-size: size(20, 1920);
+}
+.signup-button:hover{
+    transition: all .2s ease-out;
+    background: rgb(60, 52, 172);
+    box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
+    cursor: pointer;
+    color: white;
+    
 }
 @media (max-width: 750px){
     .modal-block{
@@ -199,6 +216,11 @@ form{
     border: 1px solid rgba(39, 39, 39, 0.1);
      align-items: center;
    z-index: 999;
+}
+.signup-button{
+     width: size(176, 750);
+    padding: size(15, 750);
+    font-size: size(20, 750);
 }
 .modal-block-logo{
     display: flex;
@@ -256,8 +278,25 @@ form{
    border: none;
     }
 }
+.close{
+  color: #46DFDD; 
+    position: absolute;
+  right:size(10, 750);
+  top:0;
+  font-size: size(40, 750);
+  cursor: pointer;
 }
+}
+
 @media (max-width: 468px){
+  .close{
+  color: #46DFDD; 
+    position: absolute;
+  right:size(10, 750);
+  top:0;
+  font-size: size(40, 750);
+  cursor: pointer;
+}
     .modal-block{
     padding-top: size(64, 468);
     padding-bottom: size(60, 468);
@@ -271,6 +310,11 @@ form{
     border: 1px solid rgba(39, 39, 39, 0.1);
      align-items: center;
    z-index: 999;
+}
+.signup-button{
+     width: size(176, 468);
+    padding: size(15, 468);
+    font-size: size(20, 468);
 }
 .modal-block-logo{
     display: flex;
@@ -327,6 +371,14 @@ form{
    color: black;
    border: none;
     }
+}
+.close{
+  color: #46DFDD; 
+    position: absolute;
+  right:size(10, 468);
+  top:0;
+  font-size: size(40, 468);
+  cursor: pointer;
 }
 }
 </style>

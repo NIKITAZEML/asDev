@@ -32,7 +32,7 @@
       <div class="crypto-cards">
         <div class="crypto-cards__cardsell">
         <input type="number" placeholder="Потратите" v-model="cellCoins">
-          <select  v-model="cellCoinsSelect">
+          <select class="custom-select" v-model="cellCoinsSelect">
             <option v-for='cur in this.currenciesMore'  :value="cur.CoinInfo.Name" :selected="0">
                 {{ cur.CoinInfo.Name }}
             </option>
@@ -40,7 +40,7 @@
         </div>
         <div class="crypto-cards__cardreceive">
         <input type="number" placeholder="Получите" v-model="getCoins">
-           <select v-model="getCoinsSelect">
+           <select class="custom-select" v-model="getCoinsSelect">
             <option v-for='cur in  this.currenciesMore'>
                 {{ cur.CoinInfo.Name }}
             </option>
@@ -319,11 +319,33 @@ input::-webkit-inner-spin-button {
       line-height: size(18, 1920);
       color: #8A8A8A;
     }
-    select{
-      width: size(93, 1920);
-      height: size(44, 1920);
-    }
   }
+
+  .custom-select{
+      border: 1px solid #3C1C78;
+      background-color: #16013E;
+      width: size(110, 1920);
+      height: size(44, 1920);
+      font-size: size(22, 1920);
+      color:white;
+      option{
+          border: none;
+          outline: none;
+          background: transparent;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border-radius: 0;
+          margin: 0;
+          display: block;
+          width: 100%;
+          padding: size(12, 1920) size(55, 1920) size(15, 1920) size(15, 1920);
+          font-size: size(25, 1920);
+          color: #714BB9;
+      }
+
+  }
+
 
   .crypto-cards__cardreg{
     display: flex;
