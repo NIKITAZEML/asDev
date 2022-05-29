@@ -1,20 +1,6 @@
 <template>
         <div class="wrapper">
             <div class="main">
-                <input type="checkbox" id="chk" aria-hidden="true" @change="changeInput">
-                <div class="signup" @submit.prevent="signup">
-                    <form>
-                        <label for="chk" aria-hidden="true">Регистрация</label>
-                        <input type="text" name="txt" placeholder="Логин" v-model="signupData.login">
-                        <input type="text" name="eml" placeholder="Email" v-model="signupData.email">
-                        <input type="password" name="pswd" placeholder="Пароль" v-model="signupData.password">
-                        <input type="password" name="pswd" placeholder="Повторите пароль" v-model="signupData.repeatPassword">
-                        <p style="color: red" v-if="signupErrors.emptyFields.status">{{ signupErrors.emptyFields.text }}</p>
-                        <p style="color: red" v-if="signupErrors.checkRepeatPassword.status">{{ signupErrors.checkRepeatPassword.text }}</p>
-                        <p style="color: red" v-if="signupErrors.serverError.status">{{ signupErrors.serverError.text }}</p>
-                        <button class="signup-button">Регистрация</button>
-                    </form>
-                </div>
                 <div class="login">
                     <form @submit.prevent="login">
                         <label for="chk" aria-hidden="true">Войти</label>
@@ -37,7 +23,6 @@
         name: "AuthView",
         data () {
           return {
-            isLogin: false,
             openAuth: '',
             signupData: {
               login: '',
@@ -322,9 +307,6 @@
         line-height: size(24, 750);
     }
 
-<<<<<<< HEAD
-
-=======
     .signup-button{
         width: size(334, 750);
         height: size(40, 750);
@@ -517,5 +499,4 @@
     
 }
 }
->>>>>>> ec25bd10e4db7aa47cb4f83c46e5ab3e02219974
 </style>
