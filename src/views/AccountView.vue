@@ -80,7 +80,9 @@ export default {
     created() {
       let token = localStorage.getItem('token')
       if(!token) {
-        this.$router.push('/auth')
+        // this.$router.push('/auth')
+        this.getMyCoins()
+        this.getMyHistory()
       } else {
         this.getMyCoins()
         this.getMyHistory()

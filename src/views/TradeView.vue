@@ -8,28 +8,74 @@
                 </div>
                 <div class="trade-cards">
                     <div class="trade-card__cardsell">
-                        <input type="number" placeholder="Потратить">
-                        <select>
-                            <option>1</option>
+                        <input type="number" placeholder="Потратить" v-model="cellCoins">
+                        <select v-model="cellCoinsSelect">
+                            <option v-for='cur in  this.currenciesMore'>
+                                {{ cur.CoinInfo.Name }}
+                            </option>
                         </select>
                     </div>
                     <div class="trade-card__cardreceive">
-                        <input type="number" placeholder="Получить">
-                        <select>
-                            <option>2</option>
+                        <input type="number" placeholder="Получить" v-model="getCoins">
+                        <select v-model="getCoinsSelect">
+                            <option v-for='cur in  this.currenciesMore'>
+                                {{ cur.CoinInfo.Name }}
+                            </option>
                         </select>
                     </div>
                 </div>
-                <div class="trade-card__button">Обменять</div>
+                <div class="trade-card__button" @click="sendData">Обменять</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+import axios from 'axios';
+
     export default {
-        name: "TradeView"
-    }
+        name: "TradeView", 
+        data(){
+            return{
+                cellCoins: '',
+                cellCoinsSelect: 'BTC',
+                getCoins: '',
+                getCoinsSelect: 'BTC',
+            }
+        },
+        methods:{
+            ...mapActions([
+                'GET_CURRENCIES_MORE'
+            ]),
+            sendData(){
+                // if(this.cellCoinsSelect != this.getCoinsSelect){
+                    let indexCell = 0;
+                    let indexGet = 0;
+                    this.cellCoins = this.cellCoins.replace(/\s/g, '');
+                    this.currenciesMore.forEach((element, id) => {
+                    if(element.CoinInfo.Name === this.cellCoinsSelect){
+                        indexCell = id;
+                    }
+                    });
+                    this.currenciesMore.forEach((element, id) => {
+                    if(element.CoinInfo.Name === this.getCoinsSelect){
+                        indexGet = id;
+                    }
+                    });
+                    this.getCoins = (this.cellCoins * this.currenciesMore[indexCell].RAW.RUB.PRICE) / (this.cellCoins * this.currenciesMore[indexGet].RAW.RUB.PRICE);
+                // }
+            }
+        },
+         mounted(){
+            this.GET_CURRENCIES_MORE()
+        },
+        computed: {
+            currenciesMore (){
+                return this.$store.getters.currenciesMore
+            }
+        }
+        }
 </script>
 
 <style scoped lang="scss">
