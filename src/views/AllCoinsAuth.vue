@@ -41,7 +41,7 @@
 
 
         <div class="cource-stats-cards">
-          <div class="stats-card" v-for='(currencie, index) in this.currenciesMore' v-if="searchedId === index && searched">
+          <div class="stats-card" v-for='(currencie, index) in this.currenciesMore'>
             <div class="stats-card-icon">
               <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
               <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
