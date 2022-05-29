@@ -3,7 +3,7 @@
             <div class="main">
                 <div class="login">
                     <form @submit.prevent="login">
-                        <label >Войти</label>
+                        <label class="vhod">Войти</label>
                         <input type="text" name="eml" placeholder="Email" v-model="loginData.email">
                         <input type="password" name="pswd" placeholder="Пароль" v-model="loginData.password">
                         <p style="color: red" v-if="loginErrors.emptyFields.status">{{ loginErrors.emptyFields.text }}</p>
@@ -74,7 +74,9 @@
 
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
-
+.vhod{
+  color: white;
+}
     .wrapper{
         display: flex;
         justify-content: center;
@@ -101,7 +103,6 @@
         height: auto;
     }
     label{
-        color: #fff;
         font-size: size(36, 1920);
         justify-content: center;
         display: flex;
@@ -177,6 +178,82 @@
 
 
 @media (max-width: 750px){
+  .main{
+        width: size(510, 750);
+        height: auto;
+    }
+    label{
+        font-size: size(36, 750);
+        margin: size(60, 750);
+    }
+    input{
+        width: size(334, 750);
+        height: size(48, 750);
+        margin: size(20, 750) auto;
+        padding: size(10, 750);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: size(20, 750);
+        line-height: size(24, 750);
+    }
 
+    .signup-button{
+        width: size(334, 750);
+        height: size(40, 750);
+        font-size: size(20, 750);
+        line-height: size(24, 750);
+    }
+    .login-button{
+        width: size(334, 750);
+        height: size(40, 750);
+        margin: size(40, 750) auto;
+        font-size: size(20, 750);
+        line-height: size(24, 750);
+    }
+    img{
+        margin-top: size(30, 750);
+        width: size(81, 750);
+        height: size(67, 750);
+    }
 }
+@media (max-width: 468px){
+   .main{
+        width: size(450, 468);
+        height: auto;
+    }
+    label{
+        font-size: size(36, 468);
+        margin: size(60, 468);
+    }
+    input{
+        width: size(334, 468);
+        height: size(48, 468);
+        margin: size(20, 468) auto;
+        padding: size(10, 468);
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: size(20, 468);
+        line-height: size(24, 468);
+    }
+
+    .signup-button{
+        width: size(334, 468);
+        height: size(40, 468);
+        font-size: size(20, 468);
+        line-height: size(24, 468);
+    }
+    .login-button{
+        width: size(334, 468);
+        height: size(40, 468);
+        margin: size(40, 468) auto;
+        font-size: size(20, 468);
+        line-height: size(24, 468);
+    }
+    img{
+        margin-top: size(30, 468);
+        width: size(81, 468);
+        height: size(67, 468);
+    }
+}
+
 </style>
