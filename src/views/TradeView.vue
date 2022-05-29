@@ -110,7 +110,18 @@
         transition: 0.2s ease-out;
         cursor: pointer;
         margin: size(50, 1920) auto;
+         background: #49DEDA;
+    box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+    transition: all .2s linear 0s;
+
     }
+      .trade-card__button:hover{
+    color: white;
+    transition: all .2s ease-out;
+    background: rgb(60, 52, 172);
+    box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
+    cursor: pointer;
+  }
 
 
 </style>

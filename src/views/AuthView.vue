@@ -41,12 +41,13 @@
           }
         },
         methods: {
+          
           async login() {
             this.loginErrors.emptyFields.status = false
             this.loginErrors.serverErrors.status = false
             if(this.loginData.email.trim() && this.loginData.password.trim()){
               try {
-                let res = await axios.post('http://localhost:5000/api/login', {
+                let res = await axios.post('https://c6d9-178-234-155-136.ngrok.io/api/login', {
                   email: this.loginData.email,
                   password: this.loginData.password
                 })
@@ -54,6 +55,7 @@
                 if(res.data.token){
                   // записываю токен
                   localStorage.setItem('token', res.data.token)
+                  localStorage.setItem('username', res.data.username)
                   // перекидываю в личный кабинет
                   this.$router.push('/account')
                 }
