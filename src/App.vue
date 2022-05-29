@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <component :is="getLayout"></component>
-<!--    <AppHeader/>-->
     <router-view/>
     <AppFooter/>
   </div>

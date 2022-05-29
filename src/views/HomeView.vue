@@ -9,12 +9,12 @@
       </div>
         <div class="main-button__container">
          <div class="col-3">
-            <input type="email" class="main-button__email"  placeholder="Введите email">
+            <input type="email" class="main-button__email" @input="setMail"  placeholder="Введите email">
           <span class="focus-border">
                 <i></i>
               </span>
          </div>
-          <router-link for="chk"  :to="'/auth'" class="main-button__register">Зарегистрироваться</router-link>
+          <router-link for="chk"  :to="'/reg'" class="main-button__register">Зарегистрироваться</router-link>
         </div>
       </div>
     </div>
@@ -119,6 +119,9 @@ export default {
       ]),
       getw(){
       console.log(this.firstSelect)
+    },
+    setMail(e) {
+      this.$store.commit('setMail', e.target.value)
     }
   },
   mounted(){

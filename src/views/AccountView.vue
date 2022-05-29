@@ -1,8 +1,9 @@
 <template>
     <div>
       <transition name="fade">
-        <AppPopol ref="donate" @getNew="getNew"/>
+        <AppPopol ref="donate" @getNew="getNew" @checkMsg="openMessage"/>
       </transition>
+        <AppMessage ref="appMessage" v-if="showMessage"/>
         <div class="account">
             <div class="container">
                 <div class="account-wrapper">
@@ -25,12 +26,12 @@
                     <div v-if="item.action === 'пополнение'" class="transact-history">
                       <span class="transact-history__text">{{item.action}}</span>
                       <span class="transact-history__text">+ {{ item.firstSumm }} RUB</span>
-                      <span class="transact-history__data">{{ item.date }}</span>
+                      <span class="transact-history__data">{{ slideData(item.date) }}</span>
                     </div>
                     <div v-else-if="item.action === 'вывод'" class="transact-history">
                       <span class="transact-history__text">{{item.action}}</span>
                       <span class="transact-history__text">- {{ item.firstSumm }} RUB</span>
-                      <span class="transact-history__data">{{ item.date }}</span>
+                      <span class="transact-history__data">{{ slideData(item.date) }}</span>
                     </div>
                     <div v-else-if="item.action === 'обмен'" class="transact-history">
                       <span class="transact-history__text">{{item.action}}</span>
@@ -39,7 +40,7 @@
 
                       <span class="transact-history__text">{{ item.secondSumm }}</span>
                       <span class="transact-history__text">{{ item.secondName }}</span>
-                      <span class="transact-history__data">{{ item.date }}</span>
+                      <span class="transact-history__data">{{ slideData(item.date) }}</span>
                     </div>
                   </div>
 <!--                    -->
@@ -51,19 +52,22 @@
 
 <script>
 import AppPopol from '@/components/AppPopol.vue'
+import AppMessage from '@/components/AppMessage.vue';
 import axios from "axios";
 
 export default {
  name: "AccountView",
   components: {
-    AppPopol
+    AppPopol,
+    AppMessage
   },
     data(){
         return{
            proverka:false,
           myCoins: [],
           rubSumm: null,
-          myHistory: []
+          myHistory: [],
+          showMessage: false
 
         }
     },
@@ -80,6 +84,18 @@ export default {
       }
     },
   methods: {
+   slideData(item) {
+     if(item) {
+       item = item.slice(0, -5)
+     }
+     return item.split('T').reverse().join(', дата: ')
+   },
+    openMessage() {
+     this.showMessage = true
+      setTimeout(() => {
+        this.showMessage = false
+      }, 2000)
+    },
    getNew () {
      this.getMyHistory()
      this.getMyCoins()

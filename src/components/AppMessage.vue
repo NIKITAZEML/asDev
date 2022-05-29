@@ -1,7 +1,7 @@
 <template>
     <div class="message">
-        <img v-if="!uspeh" src="@/assets/images/icons/uspeh.svg" alt="">
-        <img v-else src="@/assets/images/icons/error.svg" alt="">
+<!--        <img v-if="!uspeh" src="@/assets/images/icons/uspeh.svg" alt="">-->
+<!--        <img src="@/assets/images/icons/error.svg" alt="">-->
         <span>{{messages}}</span>
     </div>
 </template>
@@ -11,8 +11,8 @@
 export default{
     data(){
         return{
-            messages: "Обмен валюты не совершён",
-            uspeh: true
+            messages: "Успешно пополнено",
+            // uspeh: true
         }
     }
 }
@@ -21,6 +21,8 @@ export default{
 <style lang="scss" scoped>
   @import "src/assets/styles/fonts";
   .message{
+    //background: #46DFDD;
+
       z-index: 9999;
       position: absolute;
       top: 10%;
