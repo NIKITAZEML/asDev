@@ -322,9 +322,6 @@
         line-height: size(24, 750);
     }
 
-<<<<<<< HEAD
-
-=======
     .signup-button{
         width: size(334, 750);
         height: size(40, 750);
@@ -517,5 +514,4 @@
     
 }
 }
->>>>>>> ec25bd10e4db7aa47cb4f83c46e5ab3e02219974
 </style>
