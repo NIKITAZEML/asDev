@@ -1,18 +1,19 @@
 <template>
-    <div class="modal">
+    <div class="modal" v-if="isOpen">
        <div class="modal-block">
+         <span class="close" @click="closePopup">×</span>
            <div class="modal-block-logo">
                <img src="@/assets/images/logologin.png" alt="">
                <span>Пополнение счёта</span>
            </div>
-           <form>
+           <form @submit.prevent="sendDonate">
                         <div class="form-input">
                             <span>Номер карты</span>
-                            <input type="text" name="txt" placeholder="Логин" required="">
+                            <input type="number" v-model="cardN" placeholder="Номер карты" required>
                         </div>
                         <div class="form-input">
-                             <span>Сумма</span>
-                            <input type="email" name="eml" placeholder="Email" required="">
+                             <span>Сумма ₽</span>
+                            <input type="number" v-model="summ" placeholder="Сумма" required>
                         </div>
                         <button v-on:click="openMessage" class="signup-button">Пополнить</button>
                     </form>
@@ -22,6 +23,7 @@
 
 <script>
  import AppMessage from '@/components/AppMessage.vue';
+ import axios from "axios";
   export default {
      components: {
          AppMessage
@@ -30,13 +32,43 @@
 data(){
     return{
     closes:false,
-    Truemodal: false
+      summ: null,
+      cardN: null,
+    Truemodal: false,
+      isOpen: false
     
     }
 },
       methods: {
         openMessage(){
             this.Truemodal = !this.Truemodal
+        },
+        openPopup() {
+          this.isOpen = true
+        },
+        closePopup() {
+          this.isOpen = false
+        },
+        async sendDonate () {
+          try {
+            const token = localStorage.getItem("token");
+            axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+            let res = await axios.post('http://localhost:5000/api/payment', {
+              date: "2022-05-27 23:44:03",
+              firstSumm: this.summ
+            })
+            console.log(res.data)
+
+            return res.data
+          } catch (e) {
+            console.log(e)
+            return e
+          } finally {
+            this.summ = null
+            this.cardN = null
+            this.closePopup()
+            this.$emit('getNew')
+          }
         }
     }
   }
@@ -46,9 +78,9 @@ data(){
 
 <style lang="scss" scoped>
 @import "src/assets/styles/fonts";
-.close{
-    display: none;
-}
+  //.close{
+  //    display: none;
+  //}
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
@@ -72,6 +104,7 @@ data(){
     justify-content: center;
 }
 .modal-block{
+  position: relative;
     padding-top: size(64, 1920);
     padding-bottom: size(60, 1920);
     width: size(510, 1920);
@@ -142,7 +175,11 @@ form{
     }
 }
 .close{
-    display: none;
+  color: #46DFDD; font-size: 2vw;
+    position: absolute;
+  right: 2vw;
+  top: 1vw;
+  cursor: pointer;
 }
 @media (max-width: 750px){
     .modal-block{

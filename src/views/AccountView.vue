@@ -1,5 +1,8 @@
 <template>
     <div>
+      <transition name="fade">
+        <AppPopol ref="donate" @getNew="getNew"/>
+      </transition>
         <div class="account">
             <div class="container">
                 <div class="account-wrapper">
@@ -7,7 +10,7 @@
                     <div class="account-bill">
                         <span class="account-bill__title">Мои счета</span>
                         <span class="account-bill__money">Счёт в рублях: {{rubSumm}} ₽</span>
-                        <button v-on:click="openSchet" class="account-bill_button">Пополнить</button>
+                        <button v-on:click="$refs.donate.openPopup()" class="account-bill_button">Пополнить</button>
                     </div>
                     <div class="account-bill-transact" v-for="coin in this.myCoins">
                         <div class="bill-transact__block">
@@ -39,23 +42,10 @@
                       <span class="transact-history__data">{{ item.date }}</span>
                     </div>
                   </div>
-<!--                    <div class="transact-history">-->
-<!--                        <span class="transact-history__text">Пополнение баланса</span>-->
-<!--                        <span class="transact-history__text">+200грн</span>-->
-<!--                        <span class="transact-history__data">26.34.9543</span>-->
-<!--                    </div>-->
-<!--                    <div class="transact-history-trade">-->
-<!--                        <span class="transact-history__text">Обмен валют: </span>-->
-<!--                        <img src="../assets/images/icons/btk.png" alt="">-->
-<!--                        <span class="transact-history__text">2102342</span>-->
-<!--                        <img class="history-trade__arrow" src="../assets/images/icons/checkall.png" alt="">-->
-<!--                        <img src="../assets/images/icons/btk.png" alt="">-->
-<!--                    <span class="transact-history__text">2102342</span> -->
-<!--                        <span class="transact-history__data">26.34.9543</span>-->
-<!--                    </div>-->
+<!--                    -->
                 </div>
      </div>
-  <transition name="fade"> <div class="modal2" v-show="proverka"><AppPopol/><div v-on:click="openSchet" class="closeModal"><img  class="closeModal" src="@/assets/images/close.svg" alt=""></div></div></transition> </div>
+    </div>
     </div>
 </template>
 
@@ -90,6 +80,10 @@ export default {
       }
     },
   methods: {
+   getNew () {
+     this.getMyHistory()
+     this.getMyCoins()
+   },
    async getMyCoins () {
      try {
        const token = localStorage.getItem("token");
@@ -115,7 +109,7 @@ export default {
         let res = await axios.get('http://localhost:5000/api/history')
         // console.log(res.data)
         console.log(res.data)
-        this.myHistory = res.data
+        this.myHistory = res.data.reverse()
         return res.data
       } catch (e) {
         console.log(e)
