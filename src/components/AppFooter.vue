@@ -100,7 +100,7 @@ footer{
 }
 
     }
-    @media (max-width: 468px){
+    @media (max-width: 486px){
     .header-logo{
       width: size(180, 468);
       height: size(30, 468);

@@ -91,19 +91,22 @@
     }
 
     .cource-search{
-        display: flex;
+
         width: size(326, 1920);
         height: size(42, 1920);
+
     }
 
     .search__input{
         input{
+            width: size(326, 1920);
+            height: size(42, 1920);
             z-index: 1;
         }
         lable{
             position: absolute;
             z-index: 2;
-            margin-left: size(280, 1920);
+            margin-left: size(290, 1920);
             margin-top: size(8, 1920);
             svg{
                 width: size(21, 1920);

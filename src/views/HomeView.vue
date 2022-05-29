@@ -31,49 +31,60 @@
       </div>
       <div class="crypto-cards">
         <div class="crypto-cards__cardsell">
-          <input type="number" placeholder="Потратите">
-          <select>
-            <option>1</option>
+        <input type="number" placeholder="Потратите">
+          <select v-for='(currencies) in this.$store.state.currencies' >
+              <option v-for='(currencie, index) in currencies' :selected="0">
+                {{  currencie.CoinInfo.Internal }} {{index}}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__cardreceive">
-          <input type="number" placeholder="Получите">
-          <select>
-            <option>2</option>
+        <input type="number" placeholder="Получите">
+          <select v-for='currencies in this.$store.state.currencies'>
+              <option v-for='currencie in currencies'>
+                {{  currencie.CoinInfo.Internal }}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__cardreg">
-          <input type="number" placeholder="Получите при регистрации">
-          <select>
-            <option>3</option>
+        <input type="number" placeholder="Получите при регистрации">
+         <select v-for='currencies in this.$store.state.currencies' >
+              <option v-for='currencie in currencies'>
+                {{  currencie.CoinInfo.Internal }}
+              </option>
           </select>
         </div>
         <div class="crypto-cards__button">
           Рассчитать
         </div>
       </div>
-      <div class="crypto-stats">
-        <div class="stats-card">
-          <span class="crypto-stats__text">Название </span>
-          <div class="stats-card-icon">
-            <img src="../assets/images/icons/btk.png" alt="">
-            <span class="stats-card__name">BNB</span>
+  
+      <div class="crypto-stats-cards">
+        <div class="cards" v-for='currencies in this.$store.state.currencies'>
+        <div class="stats-card" v-for='currencie in currencies'>
+            <div class="stats-cards">
+              <span class="crypto-stats__text">Название </span>
+                <div class="stats-card-icon">
+                <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
+                <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
+               </div>
+            </div>
+            <div class="stats-cards">
+                <span class="crypto-stats__text">Последняя цена</span>
+                <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
+            </div>
+            <div class="stats-cards">
+              <span class="crypto-stats__text">Изменение за 24 часа</span>
+              <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+            </div>
+          <div class="stats-cards">
+            <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
+            <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
           </div>
-        </div>
-        <div class="stats-card">
-           <span class="crypto-stats__text">Последняя цена</span>
-            <span class="stats-card__price">20 100 ₽</span>
-        </div>
-        <div class="stats-card">
-           <span class="crypto-stats__text">Стоимость 24 часа назад</span>
-           <span class="stats-card__timeprice">20 500 ₽</span>
-        </div>
-         <div class="stats-card">
-           <span class="crypto-stats__text">Наивысшая стоимость</span>
-            <span class="stats-card__largeprice">3 281 818M ₽</span>
-        </div>
+           </div>
       </div>
-    
+      </div>
+      
       <div class="crypto-register__title">
         <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
         <router-link :to="'/auth'" class="register-title__button">Начать</router-link>
@@ -85,12 +96,31 @@
 
 <script>
 // @ is an alias to /src
+import {mapActions} from 'vuex';
 
 
 export default {
   name: 'HomeView',
+  data(){
+    return{
+        firstSelect: '',
+    }
+  },
+  methods:{
+      ...mapActions([
+        'GET_CURRENCIES'
+      ]),
+      getw(){
+      console.log(this.firstSelect)
+    }
+  },
+  mounted(){
+    this.GET_CURRENCIES(),
+    console.log();
+  },
   components: {
-  }
+
+  },
 }
 </script>
 
@@ -352,7 +382,7 @@ export default {
     align-items: center;
     width: size(360, 1920);
     img{
-      width: 30%;
+      width: 10%;
       height: auto;
       margin-right: size(10, 1920);
     }
@@ -361,6 +391,7 @@ export default {
   .stats-card{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: size(30, 1920);
   }
 
@@ -379,6 +410,14 @@ export default {
     color: #FFFFFF;
     align-items: center;
   }
+  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice {
+    font-weight: 400;
+    font-size: 1.0416666667vw;
+    line-height: 1.1979166667vw;
+    color: #FFFFFF;
+   
+   
+}
 
   /*-------CRYPTO-TITLE-----*/
 
@@ -409,8 +448,7 @@ export default {
   }
   .stats-card{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     height: size(50, 1920);
     justify-content: space-between;
   }
@@ -420,6 +458,10 @@ export default {
     background: rgb(60, 52, 172);
     box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
     cursor: pointer;
+  }
+  .stats-cards{
+    display: flex;
+    flex-direction: column;
   }
 @media (max-width: 750px){
    .main-container{
@@ -433,6 +475,16 @@ export default {
     background-image: none;
     height: auto;
     width: 100%;
+  }
+  .stats-card-icon{
+    display: flex;
+    align-items: center;
+    width: size(360, 1920);
+    img{
+      width: 20%;
+      height: auto;
+      margin-right: size(10, 1920);
+    }
   }
   .main-container{
     display: flex;
@@ -495,6 +547,9 @@ export default {
       line-height: size(18, 750);
       color: #8A8A8A;
     }
+}
+.crypto-cards{
+  margin-bottom: size(60, 750) !important;
 }
   .main-button__register{
     background: #FFFFFF;
@@ -639,15 +694,31 @@ export default {
     flex-wrap: wrap;
   }
   .stats-card{
-    width: 40%;
-    margin-bottom: size(50, 750);
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: size(150, 750);
+    justify-content: space-between;
+    align-items: center;
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
     font-weight: 400;
+    width: 100%;
     font-size: size(20, 750);
     line-height: size(23, 750);
     color: #FFFFFF;
-    align-items: center;
+    
+    
+  }
+  .stats-cards{
+    width: 45%;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .cards{
+    display: flex;
+    flex-direction: column;
+   flex-wrap: wrap;
   }
 }
 @media (max-width: 486px){
@@ -849,8 +920,12 @@ export default {
     flex-wrap: wrap;
   }
   .stats-card{
-    width: 40%;
-    margin-bottom: size(50, 486);
+    width: 100%;
+    margin-bottom: size(150, 486);
+    align-items: center;
+  }
+  .stats-cards{
+    width: 50%;
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
     font-weight: 400;
@@ -858,6 +933,7 @@ export default {
     line-height: size(23, 750);
     color: #FFFFFF;
     align-items: center;
+    width: 100%;
   }
   .container{
     width: 90vw;

@@ -1,5 +1,5 @@
+import axios from "axios";
 export default {
-    namespaced: true,
     state:{
         currencies: [],
     },
@@ -15,12 +15,12 @@ export default {
     },
     actions: {
         GET_CURRENCIES({commit}){
-            return axios('https://min-api.cryptocompare.com/data/top/totalvolfull?limit=20&tsym=RUB', {
+            return axios('https://min-api.cryptocompare.com/data/top/totalvolfull?limit=3&tsym=RUB', {
                 method: 'GET'
             })
             .then((currencies) => {
+                commit('SET_CURRENCIES', currencies.data.Data)
                 return currencies;
-                commit('SET_CURRENCIES', currencies)
             })
             .catch((error) => {
                 console.log(error);
