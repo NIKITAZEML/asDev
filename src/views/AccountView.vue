@@ -6,50 +6,62 @@
                     <span class="account-title">Личный кабинет </span>
                     <div class="account-bill">
                         <span class="account-bill__title">Мои счета</span>
-                        <span class="account-bill__money">Счёт в рублях: 2102342 ₽</span>
+                        <span class="account-bill__money">Счёт в рублях: {{rubSumm}} ₽</span>
                         <button v-on:click="openSchet" class="account-bill_button">Пополнить</button>
                     </div>
-                    <div class="account-bill-transact">
+                    <div class="account-bill-transact" v-for="coin in this.myCoins">
                         <div class="bill-transact__block">
-                            <img src="../assets/images/icons/btk.png" alt="">
-                            <span>2102342</span>
-                        </div>
-                        <div class="bill-transact__block">
-                            <img src="../assets/images/icons/btk.png" alt="">
-                            <span>2102342</span>
-                        </div>
-                        <div class="bill-transact__block">
-                            <img src="../assets/images/icons/btk.png" alt="">
-                            <span>2102342</span>
-                        </div>
-                        <div class="bill-transact__block">
-                            <img src="../assets/images/icons/btk.png" alt="">
-                            <span>2102342</span>
+<!--                            <img src="../assets/images/icons/btk.png" alt="">-->
+                            <span style="margin-right: 1vw;">{{coin.coinName}}</span>
+                            <span>{{coin.summ}}</span>
                         </div>
                     </div>
                     <span class="account-title">История транзакций</span>
-                    <div class="transact-history">
-                        <span class="transact-history__text">Пополнение баланса</span>
-                        <span class="transact-history__text">+200грн</span>
-                        <span class="transact-history__data">26.34.9543</span>
+                  <div v-for="item in myHistory">
+<!--                    {{item.action}}-->
+                    <div v-if="item.action === 'пополнение'" class="transact-history">
+                      <span class="transact-history__text">{{item.action}}</span>
+                      <span class="transact-history__text">+ {{ item.firstSumm }} RUB</span>
+                      <span class="transact-history__data">{{ item.date }}</span>
                     </div>
-                    <div class="transact-history-trade">
-                        <span class="transact-history__text">Обмен валют: </span>
-                        <img src="../assets/images/icons/btk.png" alt="">
-                        <span class="transact-history__text">2102342</span>
-                        <img class="history-trade__arrow" src="../assets/images/icons/checkall.png" alt="">
-                        <img src="../assets/images/icons/btk.png" alt="">
-                    <span class="transact-history__text">2102342</span> 
-                        <span class="transact-history__data">26.34.9543</span>
+                    <div v-else-if="item.action === 'вывод'" class="transact-history">
+                      <span class="transact-history__text">{{item.action}}</span>
+                      <span class="transact-history__text">- {{ item.firstSumm }} RUB</span>
+                      <span class="transact-history__data">{{ item.date }}</span>
                     </div>
+                    <div v-else-if="item.action === 'обмен'" class="transact-history">
+                      <span class="transact-history__text">{{item.action}}</span>
+                      <span class="transact-history__text">{{ item.firstSumm }}</span>
+                      <span class="transact-history__text">{{ item.firstName }} на</span>
+
+                      <span class="transact-history__text">{{ item.secondSumm }}</span>
+                      <span class="transact-history__text">{{ item.secondName }}</span>
+                      <span class="transact-history__data">{{ item.date }}</span>
+                    </div>
+                  </div>
+<!--                    <div class="transact-history">-->
+<!--                        <span class="transact-history__text">Пополнение баланса</span>-->
+<!--                        <span class="transact-history__text">+200грн</span>-->
+<!--                        <span class="transact-history__data">26.34.9543</span>-->
+<!--                    </div>-->
+<!--                    <div class="transact-history-trade">-->
+<!--                        <span class="transact-history__text">Обмен валют: </span>-->
+<!--                        <img src="../assets/images/icons/btk.png" alt="">-->
+<!--                        <span class="transact-history__text">2102342</span>-->
+<!--                        <img class="history-trade__arrow" src="../assets/images/icons/checkall.png" alt="">-->
+<!--                        <img src="../assets/images/icons/btk.png" alt="">-->
+<!--                    <span class="transact-history__text">2102342</span> -->
+<!--                        <span class="transact-history__data">26.34.9543</span>-->
+<!--                    </div>-->
                 </div>
      </div>
-   <transition name="fade"><AppPopol v-bind:proverka="proverka" v-show="proverka"/></transition> </div>
+  <transition name="fade"> <div class="modal2" v-show="proverka"><AppPopol/><div v-on:click="openSchet" class="closeModal"><img  class="closeModal" src="@/assets/images/close.svg" alt=""></div></div></transition> </div>
     </div>
 </template>
 
 <script>
 import AppPopol from '@/components/AppPopol.vue'
+import axios from "axios";
 
 export default {
  name: "AccountView",
@@ -59,20 +71,60 @@ export default {
     data(){
         return{
            proverka:false,
-          
+          myCoins: [],
+          rubSumm: null,
+          myHistory: []
+
         }
     },
-    methods: {
+  computed: {
+
+  },
+    created() {
+      let token = localStorage.getItem('token')
+      if(!token) {
+        this.$router.push('/auth')
+      } else {
+        this.getMyCoins()
+        this.getMyHistory()
+      }
+    },
+  methods: {
+   async getMyCoins () {
+     try {
+       const token = localStorage.getItem("token");
+       axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+       let res = await axios.get('http://localhost:5000/api/my_coins')
+       // console.log(res.data)
+       this.myCoins = res.data
+       this.myCoins.forEach((item) => {
+         if(item.coinName === "RUB") {
+           return this.rubSumm = item.summ
+         }
+       })
+       return res.data
+     } catch (e) {
+       console.log(e)
+       return e
+     }
+   },
+    async getMyHistory () {
+      try {
+        const token = localStorage.getItem("token");
+        axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+        let res = await axios.get('http://localhost:5000/api/history')
+        // console.log(res.data)
+        console.log(res.data)
+        this.myHistory = res.data
+        return res.data
+      } catch (e) {
+        console.log(e)
+        return e
+      }
+    },
+
         openSchet(){
              this.proverka = !this.proverka
-            // if(document.querySelector(".modal").classList.contains("close")){
-            //     document.querySelector(".modal").classList.add("open")
-                
-                
-            // }else if(document.querySelector(".modal").classList.contains("open")){
-            //     document.querySelector(".modal").classList.add("close")
-                 
-            // }
         }
     }
 }
@@ -81,12 +133,39 @@ export default {
 
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
+    .closeModal{
+        z-index: 999999;
+        position: absolute;
+        top: 0;
+        right: 0;
+       width: size(50, 1920);
+       height: size(50, 1920);
+       cursor: pointer;
+     
+    }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .7s;
 }
 .fade-enter, .fade-leave-to  {
   opacity: 0;
 }
+.account-bill_button{
+    background: #46DFDD;
+    border: none;
+    width: size(176, 1920);
+    padding: size(15, 1920);
+    font-size: size(20, 1920);
+     background: #49DEDA;
+    box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+    transition: all .2s linear 0s;
+}
+ .account-bill_button:hover{
+    color: white;
+    transition: all .2s ease-out;
+    background: rgb(60, 52, 172);
+    box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
+    cursor: pointer;
+  }
     .container{
         width: size(1440, 1920);
         margin: size(60, 1920) auto;
@@ -110,6 +189,7 @@ export default {
         justify-content: space-between;
         margin-top: size(50, 1920);
         margin-bottom: size(30, 1920);
+        align-items: center;
     }
 
 
@@ -186,5 +266,19 @@ export default {
             height: size(26, 1920) !important;
         }
     }
-
+@media (max-width: 768px){
+          .closeModal{
+        z-index: 999999;
+        position: absolute;
+        top: 0;
+        right: 0;
+       width: size(50, 468);
+       height: size(50, 468);
+       color: black;
+    
+       img{
+           width: 100%;
+       }
+    }
+}
 </style>
