@@ -46,7 +46,7 @@
             this.loginErrors.serverErrors.status = false
             if(this.loginData.email.trim() && this.loginData.password.trim()){
               try {
-                let res = await axios.post('http://localhost:5000/api/login', {
+                let res = await axios.post('https://c6d9-178-234-155-136.ngrok.io/api/login', {
                   email: this.loginData.email,
                   password: this.loginData.password
                 })

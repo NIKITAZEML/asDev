@@ -108,8 +108,8 @@ export default {
         getCoins: '',
         getCoinsReg: '',
         cellCoinsSelect: 'BTC',
-        getCoinsSelect: 'BTC',
-        getCoinsRegSelect: 'BTC',
+        getCoinsSelect: 'ETH',
+        getCoinsRegSelect: 'ETH',
         
     }
   },

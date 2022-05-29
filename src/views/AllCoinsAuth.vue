@@ -16,9 +16,9 @@
                   <defs>
                       <clipPath id="clip0_103_260">
                           <rect width="21" height="21" fill="white"/></clipPath></defs></svg></lable> -->
-              <input id="search" type="search">
+              <input id="search" type="search" v-model="search">
             </div>
-            <div class="cource-search__button">Найти</div>
+            <div class="cource-search__button" @click="searchCoin()">Найти</div>
           </div>
 
           <span class="cource-search__text">Сортировка по:</span>
@@ -39,8 +39,9 @@
           <span class="cource-stats__text">Наивысшая стоимость за 24 часа</span>
         </div>
 
-        <div v-for='currencies in this.$store.state.currencies' class="cource-stats-cards">
-          <div class="stats-card" v-for='(currencie, index) in currencies' v-if="index !== 0">
+
+        <div class="cource-stats-cards">
+          <div class="stats-card" v-for='(currencie, index) in this.currenciesMore' v-if="searchedId === index && searched">
             <div class="stats-card-icon">
               <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
               <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
@@ -62,19 +63,34 @@ import vueCustomSelect from 'vue-custom-select/src/CustomSelect.vue';
 import {mapActions} from 'vuex';
 export default {
 
-
   components: {
     vueCustomSelect,
   },
 
   data () {
     return {
+      search: '',
+      searched: true,
+      searchedId: '',
       selectedOption: '',
       dataArray: [
         {text: 'Нет сортировки', value: 'Any'},
         {text: 'Названию', value: 'Any'},
         {text: 'Цене', value: 'Any'},
       ]
+    }
+  },
+  methods:{
+    ...mapActions([
+      'GET_CURRENCIES',
+      'GET_CURRENCIES_MORE',
+    ]),
+    searchCoin(){
+      this.currenciesMore.forEach((element, id) => {
+        if(this.search.indexOf(element.CoinInfo.Name) != -1){
+          this.searchedId = id
+        }
+      });
     }
   },
 
@@ -84,18 +100,14 @@ export default {
       this.$router.push('/auth')
     }
   },
-
-  methods:{
-    ...mapActions([
-      'GET_CURRENCIES'
-    ]),
-    getw(){
-      console.log(this.firstSelect)
-    }
-  },
+   computed: {
+            currenciesMore (){
+                return this.$store.getters.currenciesMore
+            }
+        },
   mounted(){
     this.GET_CURRENCIES(),
-        console.log();
+this.GET_CURRENCIES_MORE()
   },
 };
 </script>
@@ -103,6 +115,13 @@ export default {
 <style scoped lang="scss">
 @import "src/assets/styles/fonts";
 
+input{
+  outline: none;
+}
+
+.cource-stats-cards{
+  margin-bottom: 2vw;
+}
 
 .wrapper{
   display: flex;
