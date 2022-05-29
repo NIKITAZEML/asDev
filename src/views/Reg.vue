@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="main">
-      <input type="checkbox" id="chk" aria-hidden="true" @change="changeInput">
       <div class="signup" @submit.prevent="signup">
         <form>
           <label for="chk" aria-hidden="true">Регистрация</label>
@@ -47,22 +46,6 @@ export default {
           text: '',
           status: false
         }
-      },
-
-      loginData: {
-        email: '',
-        password: ''
-      },
-
-      loginErrors: {
-        emptyFields: {
-          text: 'Заполните все поля',
-          status: false
-        },
-        serverErrors: {
-          text: '',
-          status: false
-        }
       }
     }
   },
@@ -80,7 +63,7 @@ export default {
       this.signupErrors.checkRepeatPassword.status = false
       this.signupErrors.emptyFields.status = false
       this.signupErrors.serverError.status = false
-      if(this.signupData.login.trim() && this.signupData.email.trim()){
+      if(this.signupData.login.trim() && this.signupData.email.trim() && this.signupData.password.trim()){
         if(this.signupData.password.trim() === this.signupData.repeatPassword.trim()){
           let res
           try {
@@ -91,7 +74,7 @@ export default {
             })
             console.log(res.data)
             if(res.data.registerStatus){
-              this.isLogin = true
+              this.$router.push('/auth')
             }
             return res.data
           } catch (e) {
@@ -109,33 +92,6 @@ export default {
         this.signupErrors.emptyFields.status = true
       }
     },
-    async login() {
-      this.loginErrors.emptyFields.status = false
-      this.loginErrors.serverErrors.status = false
-      if(this.loginData.email.trim() && this.loginData.password.trim()){
-        try {
-          let res = await axios.post('http://localhost:5000/api/login', {
-            email: this.loginData.email,
-            password: this.loginData.password
-          })
-          console.log(res.data)
-          if(res.data.token){
-            // записываю токен
-            localStorage.setItem('token', res.data.token)
-            // перекидываю в личный кабинет
-            this.$router.push('/account')
-          }
-          return res.data
-        } catch (e) {
-          console.log(e.response.data.message)
-          this.loginErrors.serverErrors.text = e.response.data.message
-          this.loginErrors.serverErrors.status = true
-          return e.response.data.errorText
-        }
-      } else {
-        this.loginErrors.emptyFields.status = true
-      }
-    }
   },
 }
 </script>

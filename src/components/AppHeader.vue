@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="nav-block-singin">
                                 <router-link :to="'/auth'"><div v-on:click="open" class="header-login">Войти</div></router-link>
-                                <router-link :to="'/auth'"><div v-on:click="open" class="header-register">Зарегистрироваться</div></router-link>
+                                <router-link :to="'/reg'"><div v-on:click="open" class="header-register">Зарегистрироваться</div></router-link>
                                 </div>
                          </div>
                         </div>
