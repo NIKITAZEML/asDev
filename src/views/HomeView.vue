@@ -58,26 +58,6 @@
           Рассчитать
         </div>
       </div>
-<<<<<<< HEAD
-      <div class="crypto-stats">
-        <span class="crypto-stats__text">Название </span>
-        <span class="crypto-stats__text">Последняя цена</span>
-        <span class="crypto-stats__text">Изменение за 24 часа</span>
-        <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
-      </div>
-     
-        <div v-for='currencies in this.$store.state.currencies' class="crypto-stats-cards">
-        <div class="stats-card" v-for='currencie in currencies'>
-           <div class="stats-card-icon">
-            <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
-            <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
-          </div>
-          <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
-          <span class="stats-card__timeprice">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
-          <span class="stats-card__largeprice">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
-        </div>
-      </div>
-=======
   
       <div class="crypto-stats-cards">
         <div class="cards" v-for='currencies in this.$store.state.currencies'>
@@ -104,7 +84,6 @@
            </div>
       </div>
       </div>
->>>>>>> erohin
       
       <div class="crypto-register__title">
         <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
