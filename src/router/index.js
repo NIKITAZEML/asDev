@@ -10,6 +10,7 @@ import AllCoinsAuth from "@/views/AllCoinsAuth";
 
 import AppHeader from '../components/AppHeader.vue'
 import LoginHeader from '../components/LoginHeader.vue'
+import DiagramView from "@/views/DiagramView";
 
 Vue.use(VueRouter)
 
@@ -71,7 +72,16 @@ const routes = [
     meta: {
       layout: LoginHeader
     }
-  }
+  },
+
+  {
+    path: '/diagram',
+    name: 'DiagramView',
+    component: DiagramView,
+    meta: {
+      layout: AppHeader
+    }
+  },
 ]
 
 const router = new VueRouter({
