@@ -127,6 +127,7 @@
     }
 
     .signup-button{
+      cursor: pointer;
         width: size(334, 1920);
         height: size(40, 1920);
         margin: 0 auto;
