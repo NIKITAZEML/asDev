@@ -95,9 +95,6 @@
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
 
-<<<<<<< HEAD
-
-=======
    .main-button__email{
     width: size(290, 1920);
     height: size(44, 1920);
@@ -137,7 +134,6 @@
   input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
   .col-3{ position: relative;}
   :focus{outline: none;}
->>>>>>> kov
     .wrapper{
         display: flex;
         flex:1 0;
