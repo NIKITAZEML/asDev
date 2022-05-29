@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <AppHeader/>
+    <component :is="getLayout"></component>
+<!--    <AppHeader/>-->
     <router-view/>
     <AppFooter/>
   </div>
@@ -10,7 +11,11 @@
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 export default {
- 
+  computed: {
+    getLayout() {
+      return this.$route.meta.layout
+    }
+  },
   components: {
     AppHeader,
     AppFooter
