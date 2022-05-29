@@ -5,7 +5,7 @@ import AuthView from "@/views/AuthView"
 import AccountView from "@/views/AccountView"
 import TradeView from "@/views/TradeView"
 import CourceView from "@/views/CourceView";
-
+import Reg from "@/views/Reg"
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,6 +36,11 @@ const routes = [
     name: 'CourceView',
     component: CourceView
   },
+  {
+    path: '/reg',
+    name: "reg",
+    component: Reg
+  }
 ]
 
 const router = new VueRouter({

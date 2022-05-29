@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 Vue.config.productionTip = false
 import vueCustomSelect from "vue-custom-select/src/CustomSelect.vue";
+import axios from "axios";
 Vue.component('vue-custom-select', vueCustomSelect);
 
 new Vue({

@@ -9,13 +9,13 @@
                 <div class="cource-wrapper">
                 <div class="cource-search">
                     <div class="search__input">
-                        <lable for="search"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- <lable for="search"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_103_260)">
                                 <path d="M20.8077 19.8729L14.4312 13.4574C15.6196 12.034 16.3359 10.2027 16.3359 8.2031C16.3359 3.67268 12.6632 -1.90735e-05 8.13281 -1.90735e-05C3.60239 -1.90735e-05 -0.0703125 3.67268 -0.0703125 8.2031C-0.0703125 12.7335 3.60239 16.4062 8.13281 16.4062C10.1911 16.4062 12.0713 15.6463 13.5118 14.3935L19.8794 20.8011C20.1356 21.0574 20.5514 21.0574 20.8076 20.8011C21.0636 20.5449 21.0636 20.1295 20.8076 19.8729H20.8077ZM8.13281 15.1046C4.32131 15.1046 1.23136 12.0146 1.23136 8.2031C1.23136 4.3916 4.32131 1.30165 8.13281 1.30165C11.9443 1.30165 15.0343 4.3916 15.0343 8.2031C15.0343 12.0146 11.9443 15.1046 8.13281 15.1046Z" fill="#6622A6"/>
                             </g>
                             <defs>
                                 <clipPath id="clip0_103_260">
-                                    <rect width="21" height="21" fill="white"/></clipPath></defs></svg></lable>
+                                    <rect width="21" height="21" fill="white"/></clipPath></defs></svg></lable> -->
                         <input id="search" type="search">
                     </div>
                     <div class="cource-search__button">Найти</div>
@@ -25,7 +25,7 @@
                     <vue-custom-select
                         v-model="selectedOption"
                         :data-array="dataArray"
-                        placeholder="">
+                        placeholder="-" >
                     </vue-custom-select>
                     <svg class="cource-search__svg" width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.8583 6.09836H17.2583C17.1495 6.09836 17.0471 6.15792 16.9831 6.25559L10.9223 15.5842L4.86155 6.25559C4.79756 6.15792 4.69516 6.09836 4.58636 6.09836H2.98637C2.8477 6.09836 2.76663 6.27464 2.8477 6.4009L10.3698 17.9806C10.6429 18.3999 11.2018 18.3999 11.4727 17.9806L18.9948 6.4009C19.078 6.27464 18.9969 6.09836 18.8583 6.09836Z" fill="#777777"/>
@@ -40,14 +40,14 @@
         </div>
      
         <div v-for='currencies in this.$store.state.currencies' class="cource-stats-cards">
-            <div class="stats-card" v-for='currencie in currencies'>
+            <div class="stats-card" v-for='(currencie, index) in currencies' v-if="index !== 0">
             <div class="stats-card-icon">
                 <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
                 <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
             </div>
-            <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
-            <span class="stats-card__timeprice">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
-            <span class="stats-card__largeprice">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
+            <span class="stats-card__price" v-if="currencie.RAW">{{ currencie.RAW.RUB.PRICE }} ₽</span>
+            <span class="stats-card__timeprice" v-if="currencie.RAW">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+            <span class="stats-card__largeprice" v-if="currencie.RAW">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
             </div>
         </div>
 
@@ -61,6 +61,8 @@
     import vueCustomSelect from 'vue-custom-select/src/CustomSelect.vue';
     import {mapActions} from 'vuex';
     export default {
+        
+
         components: {
             vueCustomSelect,
         },
@@ -94,6 +96,7 @@
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
 
+   
     .wrapper{
         display: flex;
         flex:1 0;

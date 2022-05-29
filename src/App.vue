@@ -27,8 +27,15 @@ export default {
     height: 100vh;
     background: #1D114F;
   }
-  // @media (max-width: 750px){
-  //   #app{ height:auto;}
-  // }
+    .select-input{
+      padding:0 0 0 size(10, 1920) !important;
+    }
+    .placeholder{
+      display: none !important;
+    }
+
+  @media (max-width: 750px){
+    #app{ height:auto;}
+  }
 </style>
 
