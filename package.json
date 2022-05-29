@@ -7,10 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@myena/advanced-select": "^2.0.0",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
+    "vue-custom-select": "^1.0.10",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
   },
