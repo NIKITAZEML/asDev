@@ -320,12 +320,12 @@ export default {
     border-radius: 5px;
     background: #49DEDA;
     box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
-    transition: all .5s linear 0s;
+    transition: all .2s linear 0s;
   }
 .crypto-cards__button:hover{
     color: white;
     cursor: pointer;
-    transition: all 1s ease-out;
+    transition: all .2s ease-out;
     background: rgb(60, 52, 172);
     box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
 }
@@ -444,7 +444,7 @@ export default {
     border-radius: 5px;
     background: #49DEDA;
     box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
-    transition: all .5s linear 0s;
+    transition: all .2s linear 0s;
   }
   .stats-card{
     display: flex;
@@ -454,7 +454,7 @@ export default {
   }
   .register-title__button:hover{
     color: white;
-    transition: all 1s ease-out;
+    transition: all .2s ease-out;
     background: rgb(60, 52, 172);
     box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
     cursor: pointer;

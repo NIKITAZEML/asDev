@@ -14,14 +14,18 @@
                              <span>Сумма</span>
                             <input type="email" name="eml" placeholder="Email" required="">
                         </div>
-                        <button class="signup-button">Пополнить</button>
+                        <button v-on:click="openMessage" class="signup-button">Пополнить</button>
                     </form>
        </div>
-    </div>
+   <AppMessage v-show="Truemodal"/></div>
 </template>
 
 <script>
+ import AppMessage from '@/components/AppMessage.vue';
   export default {
+     components: {
+         AppMessage
+     },
     //   props:{
     //    proverka: Boolean
     //   },
@@ -31,16 +35,22 @@
 //    };},
 data(){
     return{
-    closes:false}
+    closes:false,
+    Truemodal: false
+    
+    }
 },
       methods: {
         close(){
-            if(document.querySelector(".modal").classList.contains("close")){
-            this.closes = false;
-            }else{
-                this.closes = true
-            }
+            // if(document.querySelector(".modal").classList.contains("close")){
+            // this.closes = false;
+            // }else{
+            //     this.closes = true
+            // }
              
+        },
+        openMessage(){
+            this.Truemodal = !this.Truemodal
         }
     }
   }
@@ -59,7 +69,7 @@ data(){
     width: 100vw;
     height: 100vh;
     background: rgba(137, 136, 131, 0.7);
-    z-index: 999;
+    z-index: 99;
     display: flex;
     align-items: center;
     justify-content: center;

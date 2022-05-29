@@ -44,7 +44,7 @@
                     </div>
                 </div>
      </div>
-   <transition name="fade"> <AppPopol v-bind:proverka="proverka" v-show="proverka"/></transition> </div>
+   <transition name="fade"><AppPopol v-bind:proverka="proverka" v-show="proverka"/></transition> </div>
     </div>
 </template>
 
@@ -64,15 +64,15 @@ export default {
     },
     methods: {
         openSchet(){
-            this.proverka = !this.proverka
-            if(document.querySelector(".modal").classList.contains("close")){
-                document.querySelector(".modal").classList.add("open")
+             this.proverka = !this.proverka
+            // if(document.querySelector(".modal").classList.contains("close")){
+            //     document.querySelector(".modal").classList.add("open")
                 
                 
-            }else if(document.querySelector(".modal").classList.contains("open")){
-                document.querySelector(".modal").classList.add("close")
+            // }else if(document.querySelector(".modal").classList.contains("open")){
+            //     document.querySelector(".modal").classList.add("close")
                  
-            }
+            // }
         }
     }
 }
