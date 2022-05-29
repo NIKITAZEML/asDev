@@ -44,7 +44,7 @@
                     </div>
                 </div>
      </div>
-   <transition name="fade"><AppPopol v-bind:proverka="proverka" v-show="proverka"/></transition> </div>
+  <transition name="fade"> <div class="modal2" v-show="proverka"><AppPopol/><div v-on:click="openSchet" class="closeModal"><img  class="closeModal" src="@/assets/images/close.svg" alt=""></div></div></transition> </div>
     </div>
 </template>
 
@@ -65,14 +65,6 @@ export default {
     methods: {
         openSchet(){
              this.proverka = !this.proverka
-            // if(document.querySelector(".modal").classList.contains("close")){
-            //     document.querySelector(".modal").classList.add("open")
-                
-                
-            // }else if(document.querySelector(".modal").classList.contains("open")){
-            //     document.querySelector(".modal").classList.add("close")
-                 
-            // }
         }
     }
 }
@@ -81,12 +73,39 @@ export default {
 
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
+    .closeModal{
+        z-index: 999999;
+        position: absolute;
+        top: 0;
+        right: 0;
+       width: size(50, 1920);
+       height: size(50, 1920);
+       cursor: pointer;
+     
+    }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .7s;
 }
 .fade-enter, .fade-leave-to  {
   opacity: 0;
 }
+.account-bill_button{
+    background: #46DFDD;
+    border: none;
+    width: size(176, 1920);
+    padding: size(15, 1920);
+    font-size: size(20, 1920);
+     background: #49DEDA;
+    box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
+    transition: all .2s linear 0s;
+}
+ .account-bill_button:hover{
+    color: white;
+    transition: all .2s ease-out;
+    background: rgb(60, 52, 172);
+    box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
+    cursor: pointer;
+  }
     .container{
         width: size(1440, 1920);
         margin: size(60, 1920) auto;
@@ -110,6 +129,7 @@ export default {
         justify-content: space-between;
         margin-top: size(50, 1920);
         margin-bottom: size(30, 1920);
+        align-items: center;
     }
 
 
@@ -186,5 +206,19 @@ export default {
             height: size(26, 1920) !important;
         }
     }
-
+@media (max-width: 768px){
+          .closeModal{
+        z-index: 999999;
+        position: absolute;
+        top: 0;
+        right: 0;
+       width: size(50, 468);
+       height: size(50, 468);
+       color: black;
+    
+       img{
+           width: 100%;
+       }
+    }
+}
 </style>
