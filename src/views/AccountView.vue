@@ -107,6 +107,7 @@ export default {
        let res = await axios.get('http://localhost:5000/api/my_coins')
        // console.log(res.data)
        this.myCoins = res.data
+       console.log(res.data)
        this.myCoins.forEach((item) => {
          if(item.coinName === "RUB") {
            return this.rubSumm = item.summ
