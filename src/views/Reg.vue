@@ -220,7 +220,6 @@ button:hover{
     height: auto;
   }
   label{
-    color: #fff;
     font-size: size(36, 750);
     justify-content: center;
     display: flex;
@@ -327,7 +326,6 @@ button:hover{
     height: auto;
   }
   label{
-    color: #fff;
     font-size: size(36, 468);
     justify-content: center;
     display: flex;

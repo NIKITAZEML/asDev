@@ -742,7 +742,7 @@ input::-webkit-inner-spin-button {
     color: black;
      transition: all 1s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
  background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;
@@ -968,7 +968,7 @@ input::-webkit-inner-spin-button {
     color: black;
      transition: all 1s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
  background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;
