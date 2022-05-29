@@ -96,7 +96,7 @@
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
 
-   
+
     .wrapper{
         display: flex;
         flex:1 0;
