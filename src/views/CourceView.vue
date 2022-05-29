@@ -8,16 +8,12 @@
                 </div>
                 <div class="cource-wrapper">
                 <div class="cource-search">
-                    <div class="search__input">
-                        <!-- <lable for="search"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_103_260)">
-                                <path d="M20.8077 19.8729L14.4312 13.4574C15.6196 12.034 16.3359 10.2027 16.3359 8.2031C16.3359 3.67268 12.6632 -1.90735e-05 8.13281 -1.90735e-05C3.60239 -1.90735e-05 -0.0703125 3.67268 -0.0703125 8.2031C-0.0703125 12.7335 3.60239 16.4062 8.13281 16.4062C10.1911 16.4062 12.0713 15.6463 13.5118 14.3935L19.8794 20.8011C20.1356 21.0574 20.5514 21.0574 20.8076 20.8011C21.0636 20.5449 21.0636 20.1295 20.8076 19.8729H20.8077ZM8.13281 15.1046C4.32131 15.1046 1.23136 12.0146 1.23136 8.2031C1.23136 4.3916 4.32131 1.30165 8.13281 1.30165C11.9443 1.30165 15.0343 4.3916 15.0343 8.2031C15.0343 12.0146 11.9443 15.1046 8.13281 15.1046Z" fill="#6622A6"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_103_260">
-                                    <rect width="21" height="21" fill="white"/></clipPath></defs></svg></lable> -->
-                        <input id="search" type="search">
-                    </div>
+                    <div class="col-3">
+            <input type="email" class="main-button__email"  placeholder="Введите email">
+          <span class="focus-border">
+                <i></i>
+              </span>
+                </div>
                     <div class="cource-search__button">Найти</div>
                 </div>
                 
@@ -96,7 +92,45 @@
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
 
-   
+   .main-button__email{
+    width: size(290, 1920);
+    height: size(44, 1920);
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
+    &::placeholder{
+      font-weight: 600;
+      font-size: size(15, 1920);
+      line-height: size(18, 1920);
+      color: #8A8A8A;
+    }
+      .main-button__email:hover{
+        -webkit-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+        box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);}
+  }
+
+  .main-button__email ~ .focus-border:before,
+  .main-button__email ~ .focus-border:after{content: ""; position: absolute; top: 0; right: 0; width: 0; height: 3px; background-color: #6d44b8; transition: 0.2s; transition-delay: 0.2s;}
+  .main-button__email ~ .focus-border:after{top: auto; bottom: 0; right: auto; left: 0; transition-delay: 0.6s;}
+  .main-button__email ~ .focus-border i:before,
+  .main-button__email ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 0; background-color: #6d44b8; transition: 0.2s;}
+  .main-button__email ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0; transition-delay: 0.4s;}
+  .main-button__email:focus ~ .focus-border:before,
+  .main-button__email:focus ~ .focus-border:after{width: 100%; transition: 0.2s; transition-delay: 0.6s; }
+  .main-button__email:focus ~ .focus-border:after{transition-delay: 0.2s;}
+  .main-button__email:focus ~ .focus-border i:before,
+  .main-button__email:focus ~ .focus-border i:after{height: 100%; transition: 0.2s;}
+  .main-button__email:focus ~ .focus-border i:after{transition-delay: 0.4s;}
+  :focus{outline: none;}
+  .main-button__email:focus{
+  -webkit-box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);
+  -moz-box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);
+  box-shadow: 4px 4px 44px -14px rgba(26, 0, 255, 0.68);}
+  input[type="text"]{font: 15px/24px 'Muli', sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+  .col-3{ position: relative;}
+  :focus{outline: none;}
     .wrapper{
         display: flex;
         flex:1 0;
