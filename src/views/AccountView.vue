@@ -7,6 +7,7 @@
                     <div class="account-bill">
                         <span class="account-bill__title">Мои счета</span>
                         <span class="account-bill__money">Счёт в рублях: 2102342 ₽</span>
+                        <button v-on:click="openSchet" class="account-bill_button">Пополнить</button>
                     </div>
                     <div class="account-bill-transact">
                         <div class="bill-transact__block">
@@ -38,29 +39,61 @@
                         <span class="transact-history__text">2102342</span>
                         <img class="history-trade__arrow" src="../assets/images/icons/checkall.png" alt="">
                         <img src="../assets/images/icons/btk.png" alt="">
-                        <span class="transact-history__text">2102342</span>
+                    <span class="transact-history__text">2102342</span> 
                         <span class="transact-history__data">26.34.9543</span>
                     </div>
                 </div>
-            </div>
-        </div>
+     </div>
+   <transition name="fade"> <AppPopol v-bind:proverka="proverka" v-show="proverka"/></transition> </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "AccountView"
+import AppPopol from '@/components/AppPopol.vue'
+
+export default {
+ name: "AccountView",
+  components: {
+    AppPopol
+  },
+    data(){
+        return{
+           proverka:false,
+          
+        }
+    },
+    methods: {
+        openSchet(){
+            this.proverka = !this.proverka
+            if(document.querySelector(".modal").classList.contains("close")){
+                document.querySelector(".modal").classList.add("open")
+                
+                
+            }else if(document.querySelector(".modal").classList.contains("open")){
+                document.querySelector(".modal").classList.add("close")
+                 
+            }
+        }
     }
+}
+   
 </script>
 
 <style scoped lang="scss">
     @import "src/assets/styles/fonts";
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+}
     .container{
         width: size(1440, 1920);
         margin: size(60, 1920) auto;
     }
-
+.open{
+    display: flex;
+}
     .account{
 
     }
