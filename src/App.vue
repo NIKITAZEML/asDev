@@ -12,6 +12,7 @@ import AppFooter from '@/components/AppFooter.vue'
 export default {
   computed: {
     getLayout() {
+      // console.log(this.$route.meta.layout)
       return this.$route.meta.layout
     }
   },

@@ -98,6 +98,7 @@
 <script>
 // @ is an alias to /src
 import {mapActions} from 'vuex';
+import router from "@/router";
 
 
 export default {
@@ -153,6 +154,12 @@ export default {
   mounted(){
     this.GET_CURRENCIES(),
     this.GET_CURRENCIES_MORE()
+  },
+  created() {
+    let token = localStorage.getItem('token')
+    if(token) {
+      this.$router.push('/auth')
+    }
   },
   components: {
 
@@ -460,6 +467,7 @@ input::-webkit-inner-spin-button {
   }
 
   .stats-card__price{
+    font-family: "Arial";
     width: size(400, 1920);
   }
 

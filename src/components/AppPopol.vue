@@ -65,7 +65,9 @@ data(){
 
             return res.data
           } catch (e) {
-            console.log(e)
+            if(e.response.status === 403) {
+              this.$router.push('/auth')
+            }
             return e
           } finally {
             this.summ = null

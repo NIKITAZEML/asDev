@@ -122,7 +122,9 @@ export default {
        })
        return res.data
      } catch (e) {
-       console.log(e)
+       if(e.response.status === 403) {
+         this.$router.push('/auth')
+       }
        return e
      }
    },
@@ -136,7 +138,9 @@ export default {
         this.myHistory = res.data.reverse()
         return res.data
       } catch (e) {
-        console.log(e)
+        if(e.response.status === 403) {
+          this.$router.push('/auth')
+        }
         return e
       }
     },
