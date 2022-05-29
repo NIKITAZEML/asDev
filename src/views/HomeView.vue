@@ -58,6 +58,7 @@
           Рассчитать
         </div>
       </div>
+<<<<<<< HEAD
       <div class="crypto-stats">
         <span class="crypto-stats__text">Название </span>
         <span class="crypto-stats__text">Последняя цена</span>
@@ -76,6 +77,34 @@
           <span class="stats-card__largeprice">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
         </div>
       </div>
+=======
+  
+      <div class="crypto-stats-cards">
+        <div class="cards" v-for='currencies in this.$store.state.currencies'>
+        <div class="stats-card" v-for='currencie in currencies'>
+            <div class="stats-cards">
+              <span class="crypto-stats__text">Название </span>
+                <div class="stats-card-icon">
+                <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
+                <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
+               </div>
+            </div>
+            <div class="stats-cards">
+                <span class="crypto-stats__text">Последняя цена</span>
+                <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
+            </div>
+            <div class="stats-cards">
+              <span class="crypto-stats__text">Изменение за 24 часа</span>
+              <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+            </div>
+          <div class="stats-cards">
+            <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
+            <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
+          </div>
+           </div>
+      </div>
+      </div>
+>>>>>>> erohin
       
       <div class="crypto-register__title">
         <span class="crypto-title__text">Зарегистрируйтесь сейчас и получите более выгодный курс (5%)</span>
@@ -374,11 +403,17 @@ export default {
     align-items: center;
     width: size(345, 1920);
     img{
-      width: size(50, 1920);
-      height: size(50, 1920);
+      width: 10%;
       height: auto;
       margin-right: size(10, 1920);
     }
+  }
+
+  .stats-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: size(30, 1920);
   }
 
   .stats-card__price{
@@ -396,6 +431,14 @@ export default {
     color: #FFFFFF;
     align-items: center;
   }
+  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice {
+    font-weight: 400;
+    font-size: 1.0416666667vw;
+    line-height: 1.1979166667vw;
+    color: #FFFFFF;
+   
+   
+}
 
   /*-------CRYPTO-TITLE-----*/
 
@@ -426,8 +469,9 @@ export default {
   }
   .stats-card{
     display: flex;
-    margin-top: size(30, 1920);
     align-items: center;
+    height: size(50, 1920);
+    justify-content: space-between;
   }
   .register-title__button:hover{
     color: white;
@@ -435,6 +479,10 @@ export default {
     background: rgb(60, 52, 172);
     box-shadow: inset .125em .125em .5em hsl(251.61,64.58%,18.82%), inset -.125em -.125em .5em hsl(251.61,64.58%,18.82%), ;
     cursor: pointer;
+  }
+  .stats-cards{
+    display: flex;
+    flex-direction: column;
   }
 @media (max-width: 750px){
    .main-container{
@@ -448,6 +496,16 @@ export default {
     background-image: none;
     height: auto;
     width: 100%;
+  }
+  .stats-card-icon{
+    display: flex;
+    align-items: center;
+    width: size(360, 1920);
+    img{
+      width: 20%;
+      height: auto;
+      margin-right: size(10, 1920);
+    }
   }
   .main-container{
     display: flex;
@@ -510,6 +568,9 @@ export default {
       line-height: size(18, 750);
       color: #8A8A8A;
     }
+}
+.crypto-cards{
+  margin-bottom: size(60, 750) !important;
 }
   .main-button__register{
     background: #FFFFFF;
@@ -654,18 +715,31 @@ export default {
     flex-wrap: wrap;
   }
   .stats-card{
-    width: 40%;
-    justify-content: space-between;
+    display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    flex-direction: column;
-    margin-bottom: size(50, 750);
+    margin-bottom: size(150, 750);
+    justify-content: space-between;
+    align-items: center;
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
     font-weight: 400;
+    width: 100%;
     font-size: size(20, 750);
     line-height: size(23, 750);
     color: #FFFFFF;
-    align-items: center;
+    
+    
+  }
+  .stats-cards{
+    width: 45%;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .cards{
+    display: flex;
+    flex-direction: column;
+   flex-wrap: wrap;
   }
 }
 @media (max-width: 486px){
@@ -867,8 +941,12 @@ export default {
     flex-wrap: wrap;
   }
   .stats-card{
-    width: 40%;
-    margin-bottom: size(50, 486);
+    width: 100%;
+    margin-bottom: size(150, 486);
+    align-items: center;
+  }
+  .stats-cards{
+    width: 50%;
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
     font-weight: 400;
@@ -876,6 +954,7 @@ export default {
     line-height: size(23, 750);
     color: #FFFFFF;
     align-items: center;
+    width: 100%;
   }
   .container{
     width: 90vw;
