@@ -7,10 +7,10 @@
         <div class="account">
             <div class="container">
                 <div class="account-wrapper">
-                    <div class="account">
-                      <span class="account-title">Личный кабинет </span>
-                       <a href="#" @click.prevent="logout"><div v-on:click="open" class="header-login">Выход</div></a>
-                    </div>
+<!--                    <div class="account">-->
+<!--                      <span class="account-title">Личный кабинет </span>-->
+<!--                       <a href="#" @click.prevent="logout"><div v-on:click="open" class="header-login">Выход</div></a>-->
+<!--                    </div>-->
                     <div class="account-bill">
                         <span class="account-bill__title">Мои счета</span>
                         <span class="account-bill__money">Счёт в рублях: {{rubSumm}} ₽</span>
@@ -141,9 +141,7 @@ export default {
       }
     },
 
-        openSchet(){
-             this.proverka = !this.proverka
-        }
+
     }
 }
    

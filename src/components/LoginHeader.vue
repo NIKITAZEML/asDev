@@ -5,7 +5,7 @@
         <nav>
           <div class="nav-block">
             <div class="nav-block-logo">
-              <router-link class="header-logo" to="/"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
+              <router-link class="header-logo" to="/account"><img style="width:100%" src="../assets/images/logo.png" ></router-link>
               <transition name="fade">
                 <img v-if="!openOb" src="@/assets/images/icons/burger.svg" class="burger-menu" v-on:click="open"/>
               </transition>
@@ -19,13 +19,13 @@
               </div>
              <router-link :to='"/account"' class="header__nav">
                <div class="user" v-on:click="open"> 
-                 <span>porverkaexample@mail.ru</span>
+                 <span>{{ userName }}</span>
                  <img src="@/assets/images/icons/User.svg" alt="">
               </div>
              </router-link>
-              <!-- <div class="nav-block-singin">
+               <div class="nav-block-singin">
                 <a href="#" @click.prevent="logout"><div v-on:click="open" class="header-login">Выход</div></a>
-              </div> -->
+              </div>
             </div>
           </div>
         </nav>
@@ -42,6 +42,10 @@ export default{
       screenWidth: null,
       userName: localStorage.getItem('username')
     }
+  },
+  created() {
+    let ww =  localStorage.getItem('username')
+    console.log(ww)
   },
   methods:{
     logout(){

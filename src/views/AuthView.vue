@@ -51,7 +51,7 @@
                   email: this.loginData.email,
                   password: this.loginData.password
                 })
-                console.log('res', res)
+                console.log(res.data)
                 if(res.data.token){
                   // записываю токен
                   localStorage.setItem('token', res.data.token)
