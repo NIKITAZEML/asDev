@@ -61,7 +61,7 @@
   
       <div class="crypto-stats-cards">
         <div class="cards" v-for='currencies in this.$store.state.currencies'>
-        <div class="stats-card" v-for='currencie in currencies'>
+        <div class="stats-card" v-for='(currencie, index) in currencies' v-if="index !== 0">
             <div class="stats-cards">
               <span class="crypto-stats__text">Название </span>
                 <div class="stats-card-icon">
@@ -69,15 +69,15 @@
                 <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
                </div>
             </div>
-            <div class="stats-cards">
+            <div class="stats-cards" v-if="currencie.RAW">
                 <span class="crypto-stats__text">Последняя цена</span>
                 <span class="stats-card__price">{{ currencie.RAW.RUB.PRICE }} ₽</span>
             </div>
-            <div class="stats-cards">
+            <div class="stats-cards" v-if="currencie.RAW">
               <span class="crypto-stats__text">Изменение за 24 часа</span>
               <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
             </div>
-          <div class="stats-cards">
+          <div class="stats-cards" v-if="currencie.RAW">
             <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
             <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
           </div>
