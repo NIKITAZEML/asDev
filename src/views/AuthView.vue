@@ -1,7 +1,7 @@
 <template>
         <div class="wrapper">
             <div class="main">
-                <input type="checkbox" id="chk" aria-hidden="true" v-model="openAuth">
+                <input type="checkbox" id="chk" aria-hidden="true" @change="changeInput">
                 <div class="signup" @submit.prevent="signup">
                     <form>
                         <label for="chk" aria-hidden="true">Регистрация</label>
@@ -37,7 +37,7 @@
         name: "AuthView",
         data () {
           return {
-            isAuth: true,
+            isLogin: false,
             openAuth: '',
             signupData: {
               login: '',
@@ -77,7 +77,16 @@
             }
           }
         },
+      computed: {
+          getIsOpenAuth() {
+            return this.$store.getters.getIsOpenAuth
+          }
+      },
         methods: {
+          changeInput() {
+            this.isLogin = this.$store.getters.getIsOpenAuth
+            console.log(this.isLogin)
+          },
           async signup() {
             this.signupErrors.checkRepeatPassword.status = false
             this.signupErrors.emptyFields.status = false
@@ -93,7 +102,7 @@
                   })
                   console.log(res.data)
                   if(res.data.registerStatus){
-                    this.openAuth = true
+                    this.isLogin = true
                   }
                   return res.data
                 } catch (e) {
@@ -138,7 +147,7 @@
               this.loginErrors.emptyFields.status = true
             }
           }
-        }
+        },
     }
 </script>
 
@@ -265,6 +274,7 @@
     #chk:checked ~ .signup label{
         transform: scale(.6);
     }
+
 
 
 </style>

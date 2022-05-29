@@ -18,8 +18,8 @@
                                 <route-link :to="'/'" class="header__nav">Курс валют</route-link>
                                 </div>
                                 <div class="nav-block-singin">
-                                <router-link :to="'/auth'"><div class="header-login">Войти</div></router-link>
-                                <router-link :to="'/auth'"><div class="header-register">Зарегистрироваться</div></router-link>
+                                <router-link :to="'/auth'" @click="$store.dispatch('setOpenAuth', false)"><div class="header-login">Войти</div></router-link>
+                                <router-link :to="'/auth'" @click="$store.dispatch('setOpenAuth', false)"><div class="header-register">Зарегистрироваться</div></router-link>
                                 </div>
                          </div>
                         </div>
