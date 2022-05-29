@@ -49,16 +49,12 @@ export default {
       }
     }
   },
-  computed: {
-    getIsOpenAuth() {
-      return this.$store.getters.getIsOpenAuth
+  created() {
+    if(this.$store.getters.getMail.trim()){
+      this.signupData.email = this.$store.getters.getMail
     }
   },
   methods: {
-    changeInput() {
-      this.isLogin = this.$store.getters.getIsOpenAuth
-      console.log(this.isLogin)
-    },
     async signup() {
       this.signupErrors.checkRepeatPassword.status = false
       this.signupErrors.emptyFields.status = false

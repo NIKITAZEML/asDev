@@ -9,12 +9,12 @@
       </div>
         <div class="main-button__container">
          <div class="col-3">
-            <input type="email" class="main-button__email"  placeholder="Введите email">
+            <input type="email" class="main-button__email" @input="setMail"  placeholder="Введите email">
           <span class="focus-border">
                 <i></i>
               </span>
          </div>
-          <router-link for="chk"  :to="'/auth'" class="main-button__register">Зарегистрироваться</router-link>
+          <router-link for="chk"  :to="'/reg'" class="main-button__register">Зарегистрироваться</router-link>
         </div>
       </div>
     </div>
@@ -118,10 +118,12 @@ export default {
         'GET_CURRENCIES',
         'GET_CURRENCIES_MORE'
       ]),
-      getw(){
+
+    setMail(e) {
+      this.$store.commit('setMail', e.target.value)
       },
       calculate(){
-        
+
         let indexCell = 0;
         let indexGet = 0;
         this.currenciesMore.forEach((element, id) => {

@@ -18,15 +18,14 @@
                         <button v-on:click="openMessage" class="signup-button">Пополнить</button>
                     </form>
        </div>
-   <transition name="slide-fade"><AppMessage v-show="Truemodal"/></transition></div>
+    </div>
 </template>
 
 <script>
- import AppMessage from '@/components/AppMessage.vue';
  import axios from "axios";
   export default {
      components: {
-         AppMessage
+
      },
 
 data(){
@@ -50,14 +49,19 @@ data(){
           this.isOpen = false
         },
         async sendDonate () {
+          let date = new Date();
+          let testD  = date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0];
+          console.log(testD)
           try {
             const token = localStorage.getItem("token");
             axios.defaults.headers.common["Authorization"] = "Bearer " + token;
             let res = await axios.post('http://localhost:5000/api/payment', {
-              date: "2022-05-27 23:44:03",
+              date: testD,
               firstSumm: this.summ
             })
+            this.$emit('checkMsg')
             console.log(res.data)
+            this.Truemodal = true
 
             return res.data
           } catch (e) {
