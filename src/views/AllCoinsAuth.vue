@@ -22,11 +22,13 @@
           </div>
 
           <span class="cource-search__text">Сортировка по:</span>
-          <vue-custom-select
-              v-model="selectedOption"
-              :data-array="dataArray"
-              placeholder="-" >
-          </vue-custom-select>
+          <span class="price_sort" style="margin-right: 5px" @click="sortPrice">По цене |</span>
+          <span class="price_sort" @click="aSort">По названию</span>
+<!--          <vue-custom-select-->
+<!--              v-model="selectedOption"-->
+<!--              :data-array="dataArray"-->
+<!--              placeholder="-" >-->
+<!--          </vue-custom-select>-->
           <svg class="cource-search__svg" width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.8583 6.09836H17.2583C17.1495 6.09836 17.0471 6.15792 16.9831 6.25559L10.9223 15.5842L4.86155 6.25559C4.79756 6.15792 4.69516 6.09836 4.58636 6.09836H2.98637C2.8477 6.09836 2.76663 6.27464 2.8477 6.4009L10.3698 17.9806C10.6429 18.3999 11.2018 18.3999 11.4727 17.9806L18.9948 6.4009C19.078 6.27464 18.9969 6.09836 18.8583 6.09836Z" fill="#777777"/>
           </svg>
@@ -85,21 +87,27 @@ export default {
       'GET_CURRENCIES',
       'GET_CURRENCIES_MORE',
     ]),
+    aSort() {
+      this.$store.commit('sortAlph')
+    },
     searchCoin(){
       this.currenciesMore.forEach((element, id) => {
         if(this.search.indexOf(element.CoinInfo.Name) != -1){
           this.searchedId = id
         }
       });
+    },
+    sortPrice() {
+      this.$store.commit('sortPrice')
     }
   },
 
-  created() {
-    let token = localStorage.getItem('token')
-    if(!token) {
-      this.$router.push('/auth')
-    }
-  },
+  // created() {
+  //   let token = localStorage.getItem('token')
+  //   if(!token) {
+  //     this.$router.push('/auth')
+  //   }
+  // },
    computed: {
             currenciesMore (){
                 return this.$store.getters.currenciesMore
@@ -114,7 +122,11 @@ this.GET_CURRENCIES_MORE()
 
 <style scoped lang="scss">
 @import "src/assets/styles/fonts";
-
+.price_sort{
+  color: white;;
+  cursor: pointer;
+  font-size: 1vw;
+}
 input{
   outline: none;
 }

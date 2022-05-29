@@ -15,7 +15,7 @@
                          <div v-bind:class="{nav_open:openOb}"  class="nav">
                                 <div class="nav-block-value">
                                 <router-link :to="'/auth'" class="header__nav"><span v-on:click="open">Обмен валют</span></router-link>
-                                <router-link :to="'/cource'" class="header__nav"><span v-on:click="open">Курс валют</span></router-link>
+                                <router-link :to="'/allcoins'" class="header__nav"><span v-on:click="open">Курс валют</span></router-link>
                                 </div>
                                 <div class="nav-block-singin">
                                 <router-link :to="'/auth'"><div v-on:click="open" class="header-login">Войти</div></router-link>
