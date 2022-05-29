@@ -317,7 +317,7 @@ export default {
     line-height: size(19, 1920);
     color: black;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0;
     background: #49DEDA;
     box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
     transition: all .2s linear 0s;
@@ -441,7 +441,7 @@ export default {
     line-height: size(19, 1920);
     color: black;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0;
     background: #49DEDA;
     box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
     transition: all .2s linear 0s;
@@ -634,7 +634,7 @@ export default {
     color: black;
      transition: 0.2s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
      background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;
@@ -860,7 +860,7 @@ export default {
     color: black;
      transition: 0.2s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
      background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;

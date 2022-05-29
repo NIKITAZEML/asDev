@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" :class="{close:closes}" v-on:click="close">
+    <div class="modal">
        <div class="modal-block">
            <div class="modal-block-logo">
                <img src="@/assets/images/logologin.png" alt="">
@@ -17,7 +17,7 @@
                         <button v-on:click="openMessage" class="signup-button">Пополнить</button>
                     </form>
        </div>
-   <AppMessage v-show="Truemodal"/></div>
+   <transition name="slide-fade"><AppMessage v-show="Truemodal"/></transition></div>
 </template>
 
 <script>
@@ -26,13 +26,7 @@
      components: {
          AppMessage
      },
-    //   props:{
-    //    proverka: Boolean
-    //   },
-//       data: function() {
-//    return {
-//        propVal: this.proverka
-//    };},
+
 data(){
     return{
     closes:false,
@@ -41,14 +35,6 @@ data(){
     }
 },
       methods: {
-        close(){
-            // if(document.querySelector(".modal").classList.contains("close")){
-            // this.closes = false;
-            // }else{
-            //     this.closes = true
-            // }
-             
-        },
         openMessage(){
             this.Truemodal = !this.Truemodal
         }
@@ -63,13 +49,24 @@ data(){
 .close{
     display: none;
 }
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active до версии 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 .modal{
     position: absolute;
     top: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(137, 136, 131, 0.7);
-    z-index: 99;
+    z-index: 90;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,7 +83,7 @@ data(){
     background-color: white;
     border: 1px solid rgba(39, 39, 39, 0.1);
      align-items: center;
-   
+   z-index: 999;
 }
 .modal-block-logo{
     display: flex;
@@ -146,5 +143,149 @@ form{
 }
 .close{
     display: none;
+}
+@media (max-width: 750px){
+    .modal-block{
+    padding-top: size(64, 750);
+    padding-bottom: size(60, 750);
+    width: size(510, 750);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: size(520, 750);
+    border: 1px solid red;
+    background-color: white;
+    border: 1px solid rgba(39, 39, 39, 0.1);
+     align-items: center;
+   z-index: 999;
+}
+.modal-block-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%;
+    img{
+        width: size(81, 750);
+        height: size(67, 750);
+        margin-bottom: size(29, 750) !important;
+    }
+    span{
+        font-size: (20, 750);
+        line-height: (28, 750);
+        font-weight: 500;
+        font-style: bold;
+        margin-bottom: size(20, 750) !important;
+    }
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    span{
+        color: rgba(23, 23, 25, 0.3);
+        font-size: size(16, 750);
+        margin-bottom: size(5, 750);
+    }
+    input{
+        width:size(334, 750);
+        height:size(48, 750);
+        padding-left: size(15, 750);
+        border: 1px solid rgba(23, 23, 25, 0.2);
+        border-radius: 10px;
+        outline: none;
+         transition: all .5s linear 0s;
+    }
+    input:focus{
+        background: rgba(106, 87, 195, 0.3);
+        border: 1px solid #6A57C3;
+         transition: all .5s linear 0s;
+    }
+}
+form{
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    button{
+        width: size(176, 750);
+        height: size(52, 750);
+         background: #46DFDD;
+   color: black;
+   border: none;
+    }
+}
+}
+@media (max-width: 468px){
+    .modal-block{
+    padding-top: size(64, 468);
+    padding-bottom: size(60, 468);
+    width: size(410, 468);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: size(520, 468);
+    border: 1px solid red;
+    background-color: white;
+    border: 1px solid rgba(39, 39, 39, 0.1);
+     align-items: center;
+   z-index: 999;
+}
+.modal-block-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%;
+    img{
+        width: size(81, 468);
+        height: size(67, 468);
+        margin-bottom: size(29, 468) !important;
+    }
+    span{
+        font-size: (20, 468);
+        line-height: (28, 468);
+        font-weight: 500;
+        font-style: bold;
+        margin-bottom: size(20, 468) !important;
+    }
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    span{
+        color: rgba(23, 23, 25, 0.3);
+        font-size: size(16, 468);
+        margin-bottom: size(5, 468);
+    }
+    input{
+        width:size(334, 468);
+        height:size(48, 468);
+        padding-left: size(15, 468);
+        border: 1px solid rgba(23, 23, 25, 0.5);
+        border-radius: 10px;
+        outline: none;
+         transition: all .5s linear 0s;
+    }
+    input:focus{
+        background: rgba(106, 87, 195, 0.3);
+        border: 1px solid #6A57C3;
+         transition: all .5s linear 0s;
+    }
+}
+form{
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    button{
+        width: size(176, 468);
+        height: size(52, 468);
+         background: #46DFDD;
+   color: black;
+   border: none;
+    }
+}
 }
 </style>

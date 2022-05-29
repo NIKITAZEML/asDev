@@ -34,8 +34,8 @@ export default {
       display: none !important;
     }
 
-  @media (max-width: 750px){
-    #app{ height:auto;}
-  }
+  // @media (max-width: 750px){
+  //   #app{ height:auto;}
+  // }
 </style>
 
