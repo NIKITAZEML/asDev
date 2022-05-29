@@ -15,7 +15,7 @@ export default {
     },
     actions: {
         GET_CURRENCIES({commit}){
-            return axios('https://min-api.cryptocompare.com/data/top/totalvolfull?limit=3&tsym=RUB', {
+            return axios('https://min-api.cryptocompare.com/data/top/totalvolfull?limit=5&tsym=RUB', {
                 method: 'GET'
             })
             .then((currencies) => {

@@ -31,34 +31,28 @@
       </div>
       <div class="crypto-cards">
         <div class="crypto-cards__cardsell">
-        <input type="number" placeholder="Потратите">
-          <select v-for='(currencies) in this.$store.state.currencies' >
-              <option v-for='(currencie, index) in currencies' :selected="0">
-                {{  currencie.CoinInfo.Internal }} {{index}}
-              </option>
+        <input type="number" placeholder="Потратите" v-model="cellCoins">
+          <select  v-model="cellCoinsSelect">
+            <option v-for='cur in this.currenciesMore'  :value="cur.CoinInfo.Name" :selected="0">
+                {{ cur.CoinInfo.Name }}
+            </option>
           </select>
         </div>
         <div class="crypto-cards__cardreceive">
-        <input type="number" placeholder="Получите">
-          <select v-for='currencies in this.$store.state.currencies'>
-              <option v-for='currencie in currencies'>
-                {{  currencie.CoinInfo.Internal }}
-              </option>
+        <input type="number" placeholder="Получите" v-model="getCoins">
+           <select v-model="getCoinsSelect">
+            <option v-for='cur in  this.currenciesMore'>
+                {{ cur.CoinInfo.Name }}
+            </option>
           </select>
         </div>
         <div class="crypto-cards__cardreg">
-        <input type="number" placeholder="Получите при регистрации">
-         <select v-for='currencies in this.$store.state.currencies' >
-              <option v-for='currencie in currencies'>
-                {{  currencie.CoinInfo.Internal }}
-              </option>
-          </select>
+        <input type="number" placeholder="Получите при регистрации" v-model="getCoinsReg">
         </div>
-        <div class="crypto-cards__button">
+        <div class="crypto-cards__button" @click="calculate">
           Рассчитать
         </div>
       </div>
-  
       <div class="crypto-stats-cards">
           <div class="stats-cards-adp">
           <span class="crypto-stats__textadp">Название </span>
@@ -110,23 +104,55 @@ export default {
   name: 'HomeView',
   data(){
     return{
-        firstSelect: '',
+        cellCoins: '',
+        getCoins: '',
+        getCoinsReg: '',
+        cellCoinsSelect: 'BTC',
+        getCoinsSelect: 'BTC',
+        getCoinsRegSelect: 'BTC',
+        
     }
   },
   methods:{
       ...mapActions([
-        'GET_CURRENCIES'
+        'GET_CURRENCIES',
+        'GET_CURRENCIES_MORE'
       ]),
-      getw(){
-      console.log(this.firstSelect)
-    },
+
     setMail(e) {
       this.$store.commit('setMail', e.target.value)
+      },
+      calculate(){
+
+        let indexCell = 0;
+        let indexGet = 0;
+        this.currenciesMore.forEach((element, id) => {
+          if(element.CoinInfo.Name === this.cellCoinsSelect){
+            indexCell = id;
+          }
+        });
+        this.currenciesMore.forEach((element, id) => {
+          if(element.CoinInfo.Name === this.getCoinsSelect){
+            indexGet = id;
+          }
+        });
+        this.getCoins = (this.cellCoins * this.currenciesMore[indexCell].RAW.RUB.PRICE) / (this.cellCoins * this.currenciesMore[indexGet].RAW.RUB.PRICE);
+        this.getCoinsReg = this.getCoins - (this.getCoins * 0.05)
+      }
+  },
+  computed: {
+    currenciesMore (){
+      return this.$store.getters.currenciesMore
+    },
+    chechSelects(){
+      if (this.getCoinsSelect === this.cellCoinsSelect){
+        this.getCoinsSelect = this.currenciesMore[1].CoinInfo.Name
+      }
     }
   },
   mounted(){
     this.GET_CURRENCIES(),
-    console.log();
+    this.GET_CURRENCIES_MORE()
   },
   components: {
 
@@ -136,6 +162,13 @@ export default {
 
 <style scoped lang="scss">
   @import "src/assets/styles/fonts";
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
 
   .wrapper{
     background: #1D114F;
@@ -711,7 +744,7 @@ export default {
     color: black;
      transition: all 1s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
  background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;
@@ -937,7 +970,7 @@ export default {
     color: black;
      transition: all 1s ease-out;
      cursor: pointer;
-     border-radius: 5px;
+     border-radius: 0;
  background: #49DEDA;
   box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
  transition: all .5s linear 0s;

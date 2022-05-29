@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import signup from "./sigup.js"
 import currencies from './currencies'
+import currenciesmore from './currenciesmore'
 
 
 Vue.use(Vuex)
@@ -33,7 +34,8 @@ export default new Vuex.Store({
   modules: {
 
     signup,
-    currencies
+    currencies,
+    currenciesmore
 
   }
 })
