@@ -40,7 +40,7 @@
         </div>
      
         <div v-for='currencies in this.$store.state.currencies' class="cource-stats-cards">
-            <div class="stats-card" v-for='(currencie, index) in currencies' v-if="index !== 0">
+            <div class="stats-card" v-for='(currencie, index) in currencies' >
             <div class="stats-card-icon">
                 <img :src="'https://www.cryptocompare.com' + currencie.CoinInfo.ImageUrl" alt="coin-image">
                 <span class="stats-card__name">{{  currencie.CoinInfo.Internal }}</span>
@@ -48,6 +48,9 @@
             <span class="stats-card__price" v-if="currencie.RAW">{{ currencie.RAW.RUB.PRICE }} ₽</span>
             <span class="stats-card__timeprice" v-if="currencie.RAW">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
             <span class="stats-card__largeprice" v-if="currencie.RAW">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
+                <svg class="stats-card__arrow" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0.199373L0 2.0744C0 2.20191 0.0927737 2.32191 0.244922 2.39691L14.777 9.49953L0.244922 16.6021C0.0927737 16.6771 0 16.7971 0 16.9246L0 18.7997C0 18.9622 0.27461 19.0572 0.47129 18.9622L18.5102 10.147C19.1633 9.82703 19.1633 9.17202 18.5102 8.85452L0.47129 0.0393696C0.27461 -0.0581322 0 0.036871 0 0.199373Z" fill="#777777"/>
+                </svg>
             </div>
         </div>
 
@@ -246,14 +249,22 @@
     width: size(440, 1920);
   }
 
-  .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
-    font-weight: 400;
-    font-size: size(20, 1920);
-    line-height: size(23, 1920);
-    color: #FFFFFF;
-    align-items: center;
+  .stats-card__largeprice{
+      width: size(220, 1920);
   }
+    .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
+        font-weight: 400;
+        font-size: size(20, 1920);
+        line-height: size(23, 1920);
+        color: #FFFFFF;
+        align-items: center;
+    }
 
+    .stats-card__arrow{
+        width: size(19, 1920);
+        height: size(19, 1920);
+
+    }
 
 
 </style>

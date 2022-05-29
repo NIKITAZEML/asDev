@@ -60,8 +60,15 @@
       </div>
   
       <div class="crypto-stats-cards">
+          <div class="stats-cards-adp">
+          <span class="crypto-stats__textadp">Название </span>
+          <span class="crypto-stats__textadp">Последняя цена</span>
+          <span class="crypto-stats__textadp">Изменение за 24 часа</span>
+          <span class="crypto-stats__textadp">Наивысшая стоимость за 24 часа</span>
+          </div>
+
         <div class="cards" v-for='currencies in this.$store.state.currencies'>
-        <div class="stats-card" v-for='(currencie, index) in currencies' v-if="index !== 0">
+        <div class="stats-card" v-for='(currencie, index) in currencies' >
             <div class="stats-cards">
               <span class="crypto-stats__text">Название </span>
                 <div class="stats-card-icon">
@@ -75,11 +82,11 @@
             </div>
             <div class="stats-cards" v-if="currencie.RAW">
               <span class="crypto-stats__text">Изменение за 24 часа</span>
-              <span class="stats-card__price">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
+              <span class="stats-card__timeprice">{{ currencie.RAW.RUB.CHANGE24HOUR }} ₽</span>
             </div>
           <div class="stats-cards" v-if="currencie.RAW">
             <span class="crypto-stats__text">Наивысшая стоимость за 24 часа</span>
-            <span class="stats-card__price">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
+            <span class="stats-card__largeprice">{{ currencie.RAW.RUB.HIGH24HOUR }} ₽</span>
           </div>
            </div>
       </div>
@@ -391,8 +398,7 @@ export default {
   .stats-card{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: size(30, 1920);
+    margin-bottom: size(30, 1920);
   }
 
   .stats-card__price{
@@ -446,12 +452,8 @@ export default {
     box-shadow: inset .125em .125em .5em hsl(178.39,69.3%,57.84%), inset -.125em -.125em .5em hsl(178.39,69.3%,57.84%);
     transition: all .2s linear 0s;
   }
-  .stats-card{
-    display: flex;
-    align-items: center;
-    height: size(50, 1920);
-    justify-content: space-between;
-  }
+
+
   .register-title__button:hover{
     color: white;
     transition: all .2s ease-out;
@@ -463,7 +465,36 @@ export default {
     display: flex;
     flex-direction: column;
   }
+
+
+@media (min-width: 751px){
+    .crypto-stats__text{
+        display: none;
+    }
+    .stats-cards-adp{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        margin-top: size(50, 1920) ;
+        margin-bottom: size(30, 1920);
+        span{
+            font-weight: 600;
+            font-size: size(16, 1920);
+            line-height: size(19, 1920);
+            color: #FFFFFF;
+            align-items: center;
+            text-align: center;
+        }
+    }
+}
+
 @media (max-width: 750px){
+
+    .stats-cards-adp{
+        display: none;
+    }
+
    .main-container{
     display: flex;
     justify-content: flex-end;
@@ -697,7 +728,7 @@ export default {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    margin-bottom: size(150, 750);
+    margin-bottom: size(100, 750);
     justify-content: space-between;
     align-items: center;
   }
@@ -713,7 +744,7 @@ export default {
   .stats-cards{
     width: 45%;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: size(60, 1920);
   }
   .cards{
     display: flex;
@@ -910,9 +941,10 @@ export default {
   }
   .crypto-stats__text{
     font-weight: 600;
-    font-size: size(20, 486);
-    line-height: size(19, 486);
+    font-size: size(40, 486);
+    line-height: size(40, 486);
     color: #FFFFFF;
+    margin-bottom: size(20, 486);
   }
  
   .crypto-stats{
@@ -921,16 +953,28 @@ export default {
   }
   .stats-card{
     width: 100%;
-    margin-bottom: size(150, 486);
+    margin-bottom: size(80, 486);
     align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
+
+    .stats-card-icon{
+        img{
+            width: size(50, 486);
+            height: size(50, 486);
+        }
+    }
+
   .stats-cards{
     width: 50%;
+      margin-bottom: size(50, 486);
   }
   .stats-card__name, .stats-card__price, .stats-card__timeprice, .stats-card__largeprice{
     font-weight: 400;
     font-size: size(20, 486);
-    line-height: size(23, 750);
+    line-height: size(23, 486);
     color: #FFFFFF;
     align-items: center;
     width: 100%;

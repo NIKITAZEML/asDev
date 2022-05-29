@@ -3,15 +3,15 @@
     <div class="main">
       <div class="signup" @submit.prevent="signup">
         <form>
-          <label for="chk" aria-hidden="true">Регистрация</label>
+          <label>Регистрация</label>
           <input type="text" name="txt" placeholder="Логин" v-model="signupData.login">
-          <input type="text" name="eml" placeholder="Email" v-model="signupData.email">
+          <input type="email" name="eml" placeholder="Email" v-model="signupData.email">
           <input type="password" name="pswd" placeholder="Пароль" v-model="signupData.password">
           <input type="password" name="pswd" placeholder="Повторите пароль" v-model="signupData.repeatPassword">
+          <button class="signup-button">Регистрация</button>
           <p style="color: red" v-if="signupErrors.emptyFields.status">{{ signupErrors.emptyFields.text }}</p>
           <p style="color: red" v-if="signupErrors.checkRepeatPassword.status">{{ signupErrors.checkRepeatPassword.text }}</p>
           <p style="color: red" v-if="signupErrors.serverError.status">{{ signupErrors.serverError.text }}</p>
-          <button class="signup-button">Регистрация</button>
         </form>
       </div>
     </div>
@@ -104,30 +104,39 @@ export default {
   justify-content: center;
 }
 
-.main{
-  width: size(510, 1920);
-  height: size(600, 1920);
-  overflow: hidden;
-  box-shadow: 5px 20px 50px #000;
+form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#chk{
-  display: none;
+.main{
+  width: size(510, 1920);
+  overflow: hidden;
+  box-shadow: 5px 20px 50px #000;
+  background: #FFFFFF;
 }
+
+
 .signup{
-  position: relative;
-  width: auto;
-  height: auto;
+  padding: size(50, 1920) size(90, 1920) size(50, 1920) size(90, 1920);
 }
+
+p{
+  padding-top: size(20, 1920);
+  font-size: size(20, 1920);
+}
+
 label{
-  color: #fff;
+  color: #573b8a;
   font-size: size(36, 1920);
   justify-content: center;
   display: flex;
-  margin: size(60, 1920);
   font-weight: bold;
   cursor: pointer;
   transition: .5s ease-in-out;
+  margin-bottom: size(50, 1920);
 }
 input{
   width: size(334, 1920);
@@ -135,20 +144,20 @@ input{
   background: #e0dede;
   justify-content: center;
   display: flex;
+  border: none;
   margin: size(20, 1920) auto;
   padding: size(10, 1920);
-  border: none;
   outline: none;
   border-radius: 2px;
   font-weight: 400;
   font-size: size(20, 1920);
   line-height: size(24, 1920);
+  margin-bottom: size(20, 1920);
 }
 
 .signup-button{
   width: size(334, 1920);
   height: size(40, 1920);
-  margin: 0 auto;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -162,6 +171,7 @@ input{
   border-radius: 5px;
   transition: .2s ease-in;
   cursor: pointer;
+  margin: auto;
 }
 .login-button{
   width: size(334, 1920);
@@ -186,39 +196,7 @@ button:hover{
   color:black;
 }
 
-img{
-  margin-top: size(30, 1920);
-  width: size(81, 1920);
-  height: size(67, 1920);
-}
 
-.login{
-  height: size(600, 1920);
-  background: #eee;
-  transform: translateY(size(40, 1920));
-  transition: .8s ease-in-out;
-  form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-.login label{
-  color: #573b8a;
-  transform: scale(.6);
-  margin-top: size(30, 1920);
-}
-
-#chk:checked ~ .login{
-  transform: translateY(size(-465, 1920));
-}
-#chk:checked ~ .login label{
-  transform: scale(1);
-}
-#chk:checked ~ .signup label{
-  transform: scale(.6);
-}
 
 @media (max-width: 750px){
   .wrapper{
@@ -332,16 +310,7 @@ img{
     margin-top: size(30, 750);
   }
 
-  #chk:checked ~ .login{
-    transform: translateY(size(-465, 750));
   }
-  #chk:checked ~ .login label{
-    transform: scale(1);
-  }
-  #chk:checked ~ .signup label{
-
-
-  }}
 @media (max-width: 468px){
   .main{
     width: 90vw;
@@ -448,15 +417,5 @@ img{
     margin-top: size(30, 468);
   }
 
-  #chk:checked ~ .login{
-    transform: translateY(size(-465, 468));
-  }
-  #chk:checked ~ .login label{
-    transform: scale(1);
-  }
-  #chk:checked ~ .signup label{
-
-
-  }
 }
 </style>
